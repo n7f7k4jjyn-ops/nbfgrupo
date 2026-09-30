@@ -181,7 +181,7 @@ body.intro-active .nav{z-index:150!important}
 
 </head>
 <body class="intro-active">
-<audio id="background-music" src="/assets/first-time-anyma.mp3" preload="auto"></audio>
+<audio id="background-music" src="/assets/first-time-anyma.mp3" preload="auto" autoplay></audio>
 <div class="galaxy-bg" aria-hidden="true"><span class="nebula n1"></span><span class="nebula n2"></span><span class="stars s1"></span><span class="stars s2"></span></div>
 <video class="ambient-video" id="moonlight-reel" autoplay playsinline preload="auto" aria-hidden="true" src="/assets/moonlight-intro.mp4"></video>
 <button id="intro-sound" type="button" aria-label="Toque para ativar o som">♫ Toque para ativar o som</button>
@@ -275,7 +275,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   if(!music.paused)return;
   music.volume=Number(volume.value);
   const result=music.play();
-  if(result&&result.then)result.then(()=>{introSound.hidden=true}).catch(()=>{music.pause();introSound.hidden=false});
+  if(result&&result.then)result.then(()=>{introSound.hidden=true}).catch(()=>{introSound.hidden=false});
  };
  const enterSite=()=>{
   if(entered)return; entered=true;
@@ -287,13 +287,15 @@ window.addEventListener('DOMContentLoaded',()=>{
  introSound.addEventListener('click',startMusic);
  video.addEventListener('ended',enterSite,{once:true});
  video.addEventListener('error',()=>{video.style.display='none'}, {once:true});
- // Intro starts immediately; audio waits for a deliberate tap/click on the page.
+ // Try audio autoplay at page load; browsers that block it can unlock on first interaction.
  video.loop=false; video.muted=true;
  video.play().catch(()=>{});
- music.pause(); music.volume=0.10; volume.value='0.10';
+ music.volume=0.10; volume.value='0.10';
  introSound.hidden=false;
- const unlock=e=>{if(e.target.closest&&e.target.closest('#intro-sound'))return;startMusic();document.removeEventListener('pointerdown',unlock,true)};
+ startMusic();
+ const unlock=()=>{startMusic();document.removeEventListener('pointerdown',unlock,true);document.removeEventListener('keydown',unlock,true)};
  document.addEventListener('pointerdown',unlock,true);
+ document.addEventListener('keydown',unlock,true);
  volume.addEventListener('input',()=>{music.volume=Number(volume.value);if(music.volume>0)startMusic();else music.pause()});
  audioToggle.addEventListener('click',()=>{
   music.muted=!music.muted;
