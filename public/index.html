@@ -865,4 +865,38 @@ button.card-link:disabled{color:#fff!important;background:#2876b5!important;opac
 .card-body p a.dj-link:hover,.moon-copy p a.dj-link:hover{color:#bd579f!important}
 @media(prefers-reduced-motion:reduce){.schedule>.card,.schedule .card-link{transition:none!important}}
 </style>
+
+<style id="pijama-agenda-loop-v1-6">
+/* Loop horizontal suave; preserva cards, textos e pop-ups existentes. */
+#programacao .carousel-controls{display:none!important}
+#programacao .schedule{display:flex!important;flex-flow:row nowrap!important;grid-template-columns:none!important;justify-content:flex-start!important;align-items:stretch!important;gap:16px!important;overflow-x:auto!important;overflow-y:hidden!important;padding:4px 4px 18px!important;scroll-snap-type:none!important;scroll-behavior:auto!important;overscroll-behavior-x:contain!important;-webkit-overflow-scrolling:touch!important;scrollbar-width:none!important;touch-action:pan-x!important;cursor:grab!important}
+#programacao .schedule:active{cursor:grabbing!important}
+#programacao .schedule::-webkit-scrollbar{display:none!important;width:0!important;height:0!important}
+#programacao .schedule>.card{display:grid!important;flex:0 0 min(32vw,360px)!important;width:auto!important;min-width:0!important;scroll-snap-align:none!important}
+#programacao .schedule>.carousel-clone{pointer-events:none!important}
+@media(max-width:760px){#programacao .schedule>.card{flex-basis:min(82vw,360px)!important}}
+@media(prefers-reduced-motion:reduce){#programacao .schedule{scroll-behavior:auto!important}}
+</style>
+<script id="pijama-agenda-infinite-loop-v1-6">
+(()=>{
+ const track=document.querySelector('#programacao .schedule');
+ if(!track||track.dataset.infiniteLoopReady)return;
+ track.dataset.infiniteLoopReady='true';
+ const originals=Array.from(track.children).filter(el=>el.classList.contains('card'));
+ if(originals.length<2)return;
+ originals.forEach(card=>{const clone=card.cloneNode(true);clone.classList.add('carousel-clone');clone.setAttribute('aria-hidden','true');clone.querySelectorAll('a,button,[tabindex]').forEach(el=>{el.setAttribute('tabindex','-1');if(el.tagName==='BUTTON')el.disabled=true});track.appendChild(clone)});
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+ let loopWidth=0,last=0,pauseUntil=0;
+ const measure=()=>{const firstClone=track.querySelector('.carousel-clone');if(originals[0]&&firstClone)loopWidth=firstClone.getBoundingClientRect().left-originals[0].getBoundingClientRect().left};
+ const pause=()=>{pauseUntil=performance.now()+1200};
+ requestAnimationFrame(()=>requestAnimationFrame(measure));
+ window.addEventListener('resize',measure,{passive:true});
+ if('ResizeObserver'in window){const observer=new ResizeObserver(measure);observer.observe(track)}
+ track.addEventListener('wheel',event=>{const amount=Math.abs(event.deltaY)>Math.abs(event.deltaX)?event.deltaY:event.deltaX;if(!amount)return;event.preventDefault();pause();track.scrollBy({left:amount,behavior:'smooth'})},{passive:false});
+ track.addEventListener('touchstart',pause,{passive:true});track.addEventListener('pointerdown',pause,{passive:true});
+ track.addEventListener('keydown',event=>{if(event.key!=='ArrowRight'&&event.key!=='ArrowLeft')return;event.preventDefault();pause();const card=track.querySelector('.card');track.scrollBy({left:(event.key==='ArrowRight'?1:-1)*(card?card.getBoundingClientRect().width+16:320),behavior:'smooth'})});
+ function frame(now){if(!last)last=now;const delta=Math.min((now-last)/1000,.05);last=now;if(loopWidth>0&&!document.hidden&&!reduced.matches&&now>pauseUntil){track.scrollLeft+=delta*16;if(track.scrollLeft>=loopWidth)track.scrollLeft-=loopWidth;else if(track.scrollLeft<0)track.scrollLeft+=loopWidth}requestAnimationFrame(frame)}
+ requestAnimationFrame(frame);
+})();
+</script>
 </body></html>
