@@ -1,0 +1,14 @@
+VERDANT — PUBLICAÇÃO HOSTINGER
+
+Repositório: n7f7k4jjyn-ops/nbfgrupo
+Branch: agenda-semana-nova-2026-10-06
+Diretório do app: raiz da branch
+
+No hPanel, crie uma aplicação Node.js a partir do GitHub e selecione o repositório e branch acima. Configure:
+- Framework: Other
+- Node.js: 22.x
+- Arquivo de entrada: server.js
+- Comando de início: npm start
+- Build command e output directory: em branco
+
+O servidor escuta a variável PORT definida pela Hostinger. A integração GitHub pode redeployar novos commits enviados à branch conectada.
