@@ -1,0 +1,13 @@
+{
+  "name": "verdant-link-na-bio",
+  "version": "1.5.0",
+  "private": true,
+  "description": "Site semanal da Verdant Curitiba — aplicação Node.js para Hostinger",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "22.x"
+  }
+}
