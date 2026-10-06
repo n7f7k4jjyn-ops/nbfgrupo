@@ -180,8 +180,28 @@ body.intro-active .nav{z-index:150!important}
 @media(max-width:760px){.nav{left:50%!important;width:100vw!important;transform:translateX(-50%)!important;padding-left:14px!important;padding-right:14px!important}.nav-right{gap:4px!important}.social-nav{gap:2px!important}}
 </style>
 
+
+<style id="verdant-entry-screen">
+html.entry-lock,html.entry-lock body{height:100%;overflow:hidden}
+#entry-screen{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 48%,#1a1308a0 0%,#09080670 48%,#03030366 100%);color:#fff;font-family:Inter,Arial,sans-serif;isolation:isolate;transition:opacity .7s ease,visibility .7s ease}
+#entry-screen[hidden]{display:none}
+#entry-screen::before,#entry-screen::after{content:"";position:absolute;left:50%;top:48%;width:min(76vw,410px);aspect-ratio:1;transform:translate(-50%,-50%);border:1px solid #fff0ff85;border-radius:50%;box-shadow:0 0 70px #f08bd35c,inset 0 0 65px #b88aff35;animation:entry-orbit 4s ease-in-out infinite alternate}
+#entry-screen::after{width:min(56vw,300px);animation-delay:.35s}
+.entry-center{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:24px}
+.entry-logo{display:block;width:min(50vw,225px);height:auto;filter:drop-shadow(0 0 28px #f2a6e880);animation:entry-arrive 1.4s ease both}
+.entry-caption{margin:20px 0 0;color:#f7f3ea;font-size:clamp(10px,2.6vw,12px);font-weight:700;letter-spacing:.27em;text-transform:uppercase}
+#entry-button{position:absolute;z-index:2;left:50%;bottom:max(28px,env(safe-area-inset-bottom));transform:translateX(-50%);min-width:152px;min-height:44px;padding:0 23px;border:1px solid #fff;background:#ffe338;color:#173a56;font:800 13px/1 Arial,sans-serif;cursor:pointer;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 8px 28px #40255b44;transition:background .2s,border-color .2s}
+#entry-button:hover{background:#fff06a;border-color:#fff}
+#entry-screen.leaving{opacity:0;visibility:hidden;pointer-events:none}
+@keyframes entry-orbit{from{scale:.82;rotate:-8deg;opacity:.4}to{scale:1.08;rotate:8deg;opacity:.9}}
+@keyframes entry-arrive{from{transform:scale(.86);opacity:0;filter:blur(8px)}to{transform:scale(1);opacity:1;filter:drop-shadow(0 0 28px #f2a6e880)}}
+@media(max-width:600px){#entry-screen::before{width:min(82vw,410px)}#entry-screen::after{width:min(62vw,300px)}.entry-logo{width:min(54vw,210px)}.entry-caption{letter-spacing:.22em}#entry-button{bottom:max(24px,env(safe-area-inset-bottom));min-height:44px}}
+@media(prefers-reduced-motion:reduce){#entry-screen::before,#entry-screen::after,.entry-logo{animation:none!important}#entry-screen,#entry-button{transition:none!important}}
+</style>
+
 </head>
-<body>
+<body class="intro-active">
+<div id="entry-screen" role="dialog" aria-modal="true" aria-labelledby="entry-caption"><div class="entry-center"><img class="entry-logo" src="/assets/embedded-2723685eb989.webp" alt="Verdant"><p class="entry-caption" id="entry-caption">Preparando a sua entrada</p></div><button id="entry-button" type="button">Entrar agora</button></div>
 <div class="pijama-sky" aria-hidden="true"><span class="pijama-cloud cloud-a"></span><span class="pijama-cloud cloud-b"></span><span class="pijama-cloud cloud-c"></span><i class="pijama-feather f1">❧</i><i class="pijama-feather f2">❧</i><i class="pijama-feather f3">❧</i><i class="pijama-feather f4">❧</i><i class="pijama-feather f5">❧</i><i class="pijama-feather f6">❧</i></div>
 
 <div class="galaxy-bg" aria-hidden="true"><span class="nebula n1"></span><span class="nebula n2"></span><span class="stars s1"></span><span class="stars s2"></span></div>
@@ -452,5 +472,30 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #ff
  .hero h1{font-size:clamp(48px,15vw,62px)}
  .hero .when b{font-size:12px!important}
 }
+</style>
+
+<script>
+(()=>{
+ const screen=document.getElementById('entry-screen');
+ const button=document.getElementById('entry-button');
+ const root=document.documentElement;
+ if(!screen||!button)return;
+ root.classList.add('entry-lock');
+ button.focus({preventScroll:true});
+ const enter=()=>{
+  if(screen.classList.contains('leaving'))return;
+  screen.classList.add('leaving');
+  document.body.classList.remove('intro-active');
+  root.classList.remove('entry-lock');
+  window.setTimeout(()=>screen.remove(),720);
+ };
+ button.addEventListener('click',enter);
+})();
+</script>
+
+<style id="entry-use-pijama-background">
+body.intro-active .pijama-sky{visibility:visible!important}
+body.intro-active .galaxy-bg{visibility:hidden!important}
+#entry-screen{background:transparent!important}
 </style>
 </body></html>
