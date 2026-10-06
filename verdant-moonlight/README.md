@@ -1,24 +1,25 @@
-# Verdant Moonlight — link na bio
+# Verdant — site semanal
 
-Projeto aprovado da página navegável da Verdant, organizado como aplicação Node.js para hospedagem na Hostinger.
+Site oficial da Verdant Curitiba, preparado como aplicação Node.js para a Hostinger.
 
 ## Estrutura
 
-- `public/index.html`: página principal mobile-first, agenda semanal, menu textual, listas, cardápio e créditos.
-- `public/assets/`: logos, artes e vídeo da abertura Moonlight.
-- `server.js`: servidor Node.js simples para a Hostinger.
-- `package.json`: comando de inicialização.
+- `public/index.html`: página principal, agenda semanal, tema da atração principal e pop-ups dos eventos.
+- `public/listas/index.html`: página de listas.
+- `public/politica-de-privacidade.html`, `public/termos-de-uso.html`, `public/exclusao-de-dados.html`: páginas legais.
+- `public/assets/`: logos e artes da semana.
+- `server.js` e `package.json`: servidor e configuração Node.js.
 
-A atração principal da semana define a experiência visual e a paleta da página inteira. A grade semanal e o restante dos conteúdos permanecem estáveis. A intro do vídeo toca sem botão de pular e depois segue em loop ambiente; áudio automático pode depender da política de reprodução do navegador.
+## Executar
 
-## Executar localmente
+Requer Node.js 18 ou superior:
 
-```bash
+```sh
 npm start
-``
+```
 
-A aplicação escuta em `PORT` ou, localmente, na porta 3000.
+O servidor usa a variável `PORT` definida pela hospedagem, com fallback local para a porta 3000.
 
-## Publicação
+## Atualização semanal
 
-Manter o repositório como fonte oficial e publicar pela Hostinger como aplicação Node.js. Configure o domínio/subdomínio na Hostinger e faça o deploy do projeto; não há publicação automática neste commit.
+Manter a estrutura e o fluxo aprovados. Adaptar paleta, tipografia e tema à arte da atração principal de sábado; preencher os demais dias apenas quando houver material e manter “Em breve” quando não houver.

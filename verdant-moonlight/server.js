@@ -10,7 +10,9 @@ const server = http.createServer((req,res)=>{
   catch { res.writeHead(400); return res.end('Bad request'); }
   let file = path.resolve(root, '.' + pathname);
   if (file !== root && !file.startsWith(root + path.sep)) { res.writeHead(403); return res.end('Forbidden'); }
-  if (pathname === '/' || pathname.endsWith('/')) file = path.join(root,'index.html');
+  if (pathname === '/') file = path.join(root,'index.html');
+  else if (pathname === '/listas' || pathname === '/listas/') file = path.join(root,'listas','index.html');
+  else if (pathname.endsWith('/')) file = path.join(root, pathname.slice(1), 'index.html');
   fs.stat(file, (err,stat)=>{
     if (err || !stat.isFile()) file = path.join(root,'index.html');
     fs.readFile(file,(readErr,data)=>{
