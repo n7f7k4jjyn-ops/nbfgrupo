@@ -435,4 +435,22 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #ff
 .event-dialog-content .event-dialog-poster{display:block;width:100%;height:100%;min-height:300px;max-height:720px;object-fit:cover;object-position:center 24%;background:rgba(255,255,255,.2)}
 @media(max-width:760px){.event-dialog{inset:2dvh 9px auto!important;transform:none!important;width:auto!important;max-width:none!important;max-height:96dvh!important}.event-dialog-content .event-dialog-poster{height:250px;min-height:0;max-height:55dvh;object-fit:cover}}
 </style>
+<style id="mobile-home-layout-fix">
+@media(max-width:600px){
+ .hero>.hero-copy{min-width:0;width:100%}
+ .hero>div:first-of-type>.kicker{font-size:9px!important;letter-spacing:.12em!important;line-height:1.45;max-width:100%;overflow-wrap:normal}
+ .hero .when{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:8px!important;align-items:start!important;width:100%;margin:22px 0 18px}
+ .hero .when b,.hero .when span{display:block;max-width:100%;min-width:0;line-height:1.4;overflow-wrap:normal}
+ .hero .when b{font-size:13px!important;letter-spacing:.06em}
+ .hero .when span{font-size:10px!important;letter-spacing:.08em}
+ .hero .actions{width:100%;gap:10px}
+ .hero .actions>.btn{max-width:100%;white-space:normal;line-height:1.2}
+ .hero-art{width:min(82%,320px)!important}
+}
+@media(max-width:360px){
+ .hero>div:first-of-type>.kicker{font-size:8px!important;letter-spacing:.08em!important}
+ .hero h1{font-size:clamp(48px,15vw,62px)}
+ .hero .when b{font-size:12px!important}
+}
+</style>
 </body></html>
