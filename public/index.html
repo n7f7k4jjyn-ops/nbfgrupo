@@ -990,7 +990,7 @@ button.card-link:disabled{color:#fff!important;background:#2876b5!important;opac
  track.addEventListener('pointercancel',endDrag);
  track.addEventListener('click',event=>{if(!suppressClick)return;suppressClick=false;event.preventDefault();event.stopImmediatePropagation()},true);
  track.addEventListener('keydown',event=>{if(event.key!=='ArrowRight'&&event.key!=='ArrowLeft')return;event.preventDefault();pause();const card=track.querySelector('.card');track.scrollBy({left:(event.key==='ArrowRight'?1:-1)*(card?card.getBoundingClientRect().width+16:320),behavior:'smooth'})});
- function frame(now){if(!last)last=now;const delta=Math.min((now-last)/1000,.05);last=now;const speed=matchMedia('(max-width:760px)').matches?28:16;if(loopWidth>0){if(track.scrollLeft>=loopWidth*2)track.scrollLeft-=loopWidth;else if(track.scrollLeft<loopWidth)track.scrollLeft+=loopWidth;if(!document.hidden&&!reduced.matches&&now>pauseUntil&&!dragStart)track.scrollLeft+=delta*speed}requestAnimationFrame(frame)}
+ function frame(now){if(!last)last=now;const delta=Math.min((now-last)/1000,.05);last=now;const speed=matchMedia('(max-width:760px)').matches?0:16;if(loopWidth>0){if(track.scrollLeft>=loopWidth*2)track.scrollLeft-=loopWidth;else if(track.scrollLeft<loopWidth)track.scrollLeft+=loopWidth;if(!document.hidden&&!reduced.matches&&now>pauseUntil&&!dragStart)track.scrollLeft+=delta*speed}requestAnimationFrame(frame)}
  requestAnimationFrame(frame);
 })();
 </script>
@@ -1244,6 +1244,20 @@ body.verdant-weekly-theme #programacao .card[data-event-theme="terashima-ascensi
 #event-info-dialog .event-detail .moon-copy{align-self:center!important;max-height:min(78dvh,700px)!important;overflow-y:auto!important;padding:clamp(22px,3vw,40px)!important}
 #event-info-dialog .event-dialog-close{position:sticky!important;top:10px!important;margin:10px 10px -50px 0!important;background:#147b98!important;color:#fff!important;border:2px solid #d9f7ff!important;outline:0!important;box-shadow:0 4px 14px #0008!important}
 #event-info-dialog .event-dialog-close:focus-visible,#event-info-dialog .event-poster-nav:focus-visible{outline:2px solid #c3f4ff!important;outline-offset:3px!important}
+@media(max-width:560px){
+ .skyland-hero{display:flex!important;flex-direction:column!important;gap:18px!important;min-height:0!important;padding:24px 0 36px!important;overflow:visible!important}
+ .skyland-hero .hero-art{position:relative!important;inset:auto!important;order:1!important;width:min(54vw,205px)!important;max-width:205px!important;margin:0 0 0 auto!important}
+ .skyland-hero .hero-art-trigger{overflow:hidden!important;transform:none!important}
+ .skyland-hero .hero-art-trigger:after{display:none!important;animation:none!important}
+ .skyland-hero .hero-art-trigger img{height:auto!important;aspect-ratio:9/16!important;object-fit:contain!important;animation:none!important;transform:none!important;filter:none!important}
+ .skyland-hero .hero-copy{position:relative!important;inset:auto!important;order:2!important;width:100%!important;max-width:none!important;margin:0!important}
+ .skyland-hero .hero-copy>.kicker{position:static!important;display:inline-flex!important;width:fit-content!important;max-width:100%!important;margin:0 0 8px!important;padding:7px 10px!important;font-size:8px!important;line-height:1.35!important;letter-spacing:.1em!important}
+ .skyland-hero .hero-copy h1{margin:0 0 12px!important;font-size:clamp(34px,9.5vw,48px)!important;line-height:1.04!important;letter-spacing:.01em!important}
+ .skyland-hero .hero-copy .intro{max-width:100%!important;font-size:13px!important;line-height:1.55!important}
+ .skyland-hero .hero-copy .when{gap:7px 14px!important;margin:14px 0!important;font-size:9px!important;line-height:1.4!important}
+ #programacao .schedule{scroll-snap-type:x mandatory!important;scroll-padding-inline:4px!important}
+ #programacao .schedule>.card{flex-basis:min(calc(100vw - 44px),360px)!important;scroll-snap-align:start!important;scroll-snap-stop:always!important}
+}
 @media(max-width:560px){
  #event-info-dialog.event-dialog{width:calc(100vw - 16px)!important;max-height:calc(100svh - 16px)!important;border-radius:16px!important}
  #event-info-dialog .event-dialog-content>.moon-panel.event-detail{grid-template-columns:minmax(0,1fr)!important;min-height:0!important}
