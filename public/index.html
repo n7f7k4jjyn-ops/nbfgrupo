@@ -255,10 +255,7 @@ body.intro-active .nav{z-index:150!important}
 </template>
 <template id="terashima-ascension">
 <section class="moon-panel event-detail" data-event-theme="terashima-ascension">
-<div class="event-poster-pair" aria-label="Cartazes das pistas de Terashima Ascension">
-<figure><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-embedded-image="terashima-ascension-sky-official.jpg" alt="Cartaz de Terashima Ascension na pista Sky"><figcaption>PISTA SKY · DESTAQUE</figcaption></figure>
-<figure><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-embedded-image="terashima-ascension-land-official.jpg" alt="Cartaz de Terashima Ascension na pista Land"><figcaption>PISTA LAND · POP &amp; FUNK</figcaption></figure>
-</div>
+<img class="event-dialog-poster" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-embedded-image="terashima-ascension-sky-official.jpg" alt="Cartaz principal de Terashima Ascension">
 <div class="moon-copy">
 <p class="kicker">SKYLAND ASCENSION · SAVE THE DATE</p><h2>TERASHIMA ASCENSION</h2>
 <p>A ASCENSION ESTÁ CHEGANDO A CURITIBA! Depois de passar por São Paulo e Florianópolis, a jornada continua e chega à cidade para uma edição especial de SKYLAND ASCENSION.</p><p>Uma nova cidade. Uma nova pista. Uma nova ascensão.</p>
@@ -1269,5 +1266,16 @@ body.verdant-weekly-theme #programacao .card[data-event-theme="terashima-ascensi
  #event-info-dialog .event-poster-next{right:12px!important}
 }
 @media(prefers-reduced-motion:reduce){#event-info-dialog .event-poster-track{transition:none!important}}
+#programacao .schedule>.card{grid-template-rows:auto!important;flex:0 0 clamp(390px,37vw,440px)!important;min-height:0!important;border-color:color-mix(in srgb,var(--event-accent) 32%,transparent)!important}
+#programacao .schedule .card[data-event-theme] .poster{display:flex!important;align-items:center!important;height:auto!important;min-height:0!important;aspect-ratio:auto!important;align-self:center!important}
+#programacao .schedule .card[data-event-theme] .poster img{display:block!important;width:100%!important;height:auto!important;max-height:none!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:center!important}
+#programacao .schedule .card[data-event-theme] .card-link{min-height:38px!important;background:rgba(255,255,255,.045)!important;border:1px solid color-mix(in srgb,var(--event-accent) 38%,transparent)!important;box-shadow:none!important;backdrop-filter:blur(8px)!important;color:var(--event-accent)!important}
+#programacao .schedule .card[data-event-theme] .card-link:hover{background:rgba(255,255,255,.1)!important;border-color:var(--event-accent)!important;color:#fff!important}
+@media(max-width:760px){
+ #programacao .schedule>.card{grid-template-columns:minmax(105px,34%) minmax(0,1fr)!important;grid-template-rows:auto!important;flex-basis:min(calc(100vw - 24px),430px)!important}
+}
+@media(max-width:380px){
+ #programacao .schedule>.card{grid-template-columns:minmax(96px,34%) minmax(0,1fr)!important;flex-basis:calc(100vw - 24px)!important}
+}
 </style>
 </body></html>
