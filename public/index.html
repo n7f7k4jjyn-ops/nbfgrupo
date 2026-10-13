@@ -1266,7 +1266,8 @@ body.verdant-weekly-theme #programacao .card[data-event-theme="terashima-ascensi
  #event-info-dialog .event-poster-next{right:12px!important}
 }
 @media(prefers-reduced-motion:reduce){#event-info-dialog .event-poster-track{transition:none!important}}
-#programacao .schedule>.card{grid-template-rows:auto!important;flex:0 0 clamp(390px,37vw,440px)!important;min-height:0!important;border-color:color-mix(in srgb,var(--event-accent) 32%,transparent)!important}
+#programacao .schedule>.card{grid-template-rows:auto!important;flex:0 0 clamp(390px,37vw,440px)!important;max-width:none!important;min-height:0!important}
+#programacao .schedule .card[data-event-theme]{border-color:color-mix(in srgb,var(--event-accent) 32%,transparent)!important}
 #programacao .schedule .card[data-event-theme] .poster{display:flex!important;align-items:center!important;height:auto!important;min-height:0!important;aspect-ratio:auto!important;align-self:center!important}
 #programacao .schedule .card[data-event-theme] .poster img{display:block!important;width:100%!important;height:auto!important;max-height:none!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:center!important}
 #programacao .schedule .card[data-event-theme] .card-link{min-height:38px!important;background:rgba(255,255,255,.045)!important;border:1px solid color-mix(in srgb,var(--event-accent) 38%,transparent)!important;box-shadow:none!important;backdrop-filter:blur(8px)!important;color:var(--event-accent)!important}
