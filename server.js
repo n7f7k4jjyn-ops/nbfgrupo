@@ -18,6 +18,11 @@ const MIME_TYPES = Object.freeze({
   '.svg': 'image/svg+xml',
   '.webp': 'image/webp',
 });
+const SHORT_LINKS = Object.freeze({
+  '/lovers': 'https://connect.verdantcwb.com/lista/lover',
+  '/aniversario': 'https://connect.verdantcwb.com/lista/aniversario',
+  '/djs': 'https://connect.verdantcwb.com/lista/djs',
+});
 
 function sendText(res, status, message, headOnly = false) {
   const body = Buffer.from(message, 'utf8');
@@ -42,6 +47,19 @@ const server = http.createServer((req, res) => {
     pathname = decodeURIComponent(new URL(req.url || '/', 'http://localhost').pathname);
   } catch {
     return sendText(res, 400, 'Requisição inválida', headOnly);
+  }
+
+  const shortLinkPath = pathname.replace(/\/+$/, '') || '/';
+  const shortLinkTarget = SHORT_LINKS[shortLinkPath];
+  if (shortLinkTarget) {
+    const location = new URL(shortLinkTarget);
+    location.search = new URL(req.url || '/', 'http://localhost').search;
+    res.writeHead(301, {
+      Location: location.toString(),
+      'Cache-Control': 'public, max-age=3600',
+      'X-Content-Type-Options': 'nosniff',
+    });
+    return res.end();
   }
 
   if (pathname === '/') pathname = '/index.html';
