@@ -56,18 +56,12 @@ const server = http.createServer((req, res) => {
   if (shortLinkTarget) {
     const location = new URL(shortLinkTarget);
     location.search = new URL(req.url || '/', 'http://localhost').search;
-    const src = location.toString().replace(/&/g, '&amp;').replace(/"/g, '&quot;');
-    const body = Buffer.from(
-      `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#11121d"><title>Verdant</title><link rel="icon" href="/assets/verdant-logo-branca.png"><style>html,body{margin:0;height:100%;background:#11121d}iframe{display:block;width:100%;height:100%;border:0}</style></head><body><iframe src="${src}" title="Verdant" allow="clipboard-write"></iframe></body></html>`,
-      'utf8',
-    );
-    res.writeHead(200, {
-      'Content-Type': 'text/html; charset=utf-8',
-      'Content-Length': body.length,
-      'Cache-Control': 'no-cache',
+    res.writeHead(302, {
+      Location: location.toString(),
+      'Cache-Control': 'no-store',
       'X-Content-Type-Options': 'nosniff',
     });
-    return res.end(headOnly ? undefined : body);
+    return res.end();
   }
 
   if (pathname === '/') pathname = '/index.html';
