@@ -13,8 +13,8 @@
   <link rel="stylesheet" href="/assets/legal-pages.css">
   <style>
     .events-intro {
-      max-width: 590px;
-      margin: 16px auto 28px;
+      max-width: 420px;
+      margin: 12px auto 22px;
       color: var(--muted);
       font-size: 14px;
       line-height: 1.65;
@@ -23,8 +23,9 @@
 
     .events-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      width: min(100%, 520px);
+      margin: 0 auto;
+      gap: 12px;
     }
 
     .event-card {
@@ -39,57 +40,106 @@
 
     .event-cover {
       display: flex;
+      min-height: 82px;
+      align-items: center;
+      gap: 14px;
+      padding: 8px 14px 8px 8px;
       overflow: hidden;
-      aspect-ratio: 1;
       border: 1px solid color-mix(in srgb, var(--event-color) 34%, transparent);
-      border-radius: 12px;
-      background: var(--surface);
-      box-shadow: 0 12px 28px rgba(0,0,0,.18);
-      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      border-radius: 15px;
+      background:
+        radial-gradient(ellipse at 100% 0%, color-mix(in srgb, var(--event-color) 13%, transparent), transparent 62%),
+        var(--surface);
+      color: inherit;
+      text-decoration: none;
+      box-shadow: 0 8px 22px rgba(0,0,0,.14);
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
     }
 
     .event-cover img {
       display: block;
-      width: 100%;
-      height: 100%;
+      width: 64px;
+      height: 64px;
+      flex: 0 0 64px;
+      border-radius: 9px;
       object-fit: cover;
       object-position: center;
     }
 
     .event-cover-placeholder {
       display: flex;
-      width: 100%;
-      height: 100%;
-      flex-direction: column;
+      width: 64px;
+      height: 64px;
+      flex: 0 0 64px;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      border-radius: 9px;
       background:
         radial-gradient(circle at 50% 35%, rgba(255,232,70,.32), transparent 38%),
         linear-gradient(145deg, #173b36, #0b1722 72%);
       color: #fff;
-      font-size: clamp(13px, 2vw, 20px);
-      font-weight: 800;
-      letter-spacing: .09em;
-      text-align: center;
-      text-shadow: 0 2px 14px #0009;
+      font-size: 24px;
     }
 
-    .event-cover-placeholder span:first-child { font-size: 1.8em; }
+    .event-cover-placeholder span:not(:first-child) { display: none; }
+
+    .event-copy {
+      display: grid;
+      min-width: 0;
+      flex: 1;
+      gap: 5px;
+    }
+
+    .event-copy strong {
+      overflow: hidden;
+      color: inherit;
+      font-size: 14px;
+      font-weight: 800;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .event-copy small {
+      overflow: hidden;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.4;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .event-arrow {
+      display: grid;
+      width: 32px;
+      height: 32px;
+      flex: 0 0 32px;
+      place-items: center;
+      border: 1px solid color-mix(in srgb, var(--event-color) 36%, transparent);
+      border-radius: 50%;
+      color: var(--event-color);
+      font-size: 15px;
+      transition: background .18s ease, transform .18s ease;
+    }
 
     .event-cover:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       border-color: var(--event-color);
-      box-shadow: 0 18px 36px rgba(0,0,0,.28), 0 0 22px color-mix(in srgb, var(--event-color) 20%, transparent);
+      box-shadow: 0 12px 28px rgba(0,0,0,.22), 0 0 18px color-mix(in srgb, var(--event-color) 16%, transparent);
     }
 
-    body.light .event-cover { box-shadow: 0 12px 28px rgba(41,55,79,.14); }
+    .event-cover:hover .event-arrow { background: color-mix(in srgb, var(--event-color) 15%, transparent); transform: translateX(2px); }
+    body.light .event-cover { border-color: rgba(37,54,78,.17); box-shadow: 0 8px 22px rgba(41,55,79,.1); }
+    body.light .event-copy strong { color: #17243a; }
     .event-cover:focus-visible { outline: 3px solid #8bdcff; outline-offset: 3px; }
 
     @media (max-width: 600px) {
-      .events-intro { margin: 13px auto 22px; font-size: 13px; }
-      .events-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-      .event-cover { border-radius: 9px; }
+      .events-intro { margin: 10px auto 20px; font-size: 13px; }
+      .events-grid { gap: 10px; }
+      .event-cover { min-height: 76px; gap: 12px; padding: 6px 11px 6px 6px; border-radius: 13px; }
+      .event-cover img, .event-cover-placeholder { width: 62px; height: 62px; flex-basis: 62px; }
+      .event-copy strong { font-size: 13px; }
+      .event-copy small { font-size: 10px; }
+      .event-arrow { width: 29px; height: 29px; flex-basis: 29px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -114,21 +164,29 @@
         <article class="event-card">
           <a class="event-cover" href="https://www.facebook.com/share/1M6s8FcqSv/" target="_blank" rel="noopener noreferrer" aria-label="Abrir evento Start Me Up no Facebook">
             <img src="/assets/start-me-up-pop-funk.jpg" alt="Capa do evento Start Me Up">
+            <span class="event-copy"><strong>Start Me Up</strong><small>Quinta · 15 de outubro · 22h</small></span>
+            <span class="event-arrow" aria-hidden="true">↗</span>
           </a>
         </article>
         <article class="event-card">
           <a class="event-cover" href="https://www.facebook.com/share/1DZD9sqRaU/" target="_blank" rel="noopener noreferrer" aria-label="Abrir evento Frenétika no Facebook">
             <img src="/assets/frenetika-land-2026.jpg" alt="Capa do evento Frenétika">
+            <span class="event-copy"><strong>Frenétika</strong><small>Sexta · 16 de outubro · 22h</small></span>
+            <span class="event-arrow" aria-hidden="true">↗</span>
           </a>
         </article>
         <article class="event-card">
           <a class="event-cover" href="https://www.facebook.com/share/1HqZ1DJrMm/" target="_blank" rel="noopener noreferrer" aria-label="Abrir evento Terashima Ascension no Facebook">
             <img src="/assets/terashima-ascension-main-2026.jpg" alt="Capa do evento Terashima Ascension">
+            <span class="event-copy"><strong>Terashima Ascension</strong><small>Sábado · 17 de outubro · 22h</small></span>
+            <span class="event-arrow" aria-hidden="true">↗</span>
           </a>
         </article>
         <article class="event-card">
           <a class="event-cover" href="https://www.facebook.com/share/1BpoHsHqbW/" target="_blank" rel="noopener noreferrer" aria-label="Abrir evento Ressaka no Facebook">
             <img src="/assets/ressaka-poster.jpg" alt="Capa do evento Ressaka">
+            <span class="event-copy"><strong>Ressaka</strong><small>Domingo · 18 de outubro · 19h</small></span>
+            <span class="event-arrow" aria-hidden="true">↗</span>
           </a>
         </article>
         <article class="event-card">
@@ -138,6 +196,8 @@
               <span>GOSTOSO</span>
               <span>SÁBADO · 24 OUT</span>
             </span>
+            <span class="event-copy"><strong>GOSTOSO</strong><small>Sábado · 24 de outubro</small></span>
+            <span class="event-arrow" aria-hidden="true">↗</span>
           </a>
         </article>
       </section>
