@@ -21,7 +21,8 @@ const MIME_TYPES = Object.freeze({
 const SHORT_LINKS = Object.freeze({
   '/lovers': 'https://connect.verdantcwb.com/lista/lover',
   '/aniversario': 'https://connect.verdantcwb.com/lista/aniversario',
-  '/djs': 'https://connect.verdantcwb.com/lista/djs',
+  '/dj': 'https://connect.verdantcwb.com/lista/djs',
+  '/influencers': 'https://connect.verdantcwb.com/lista/influencers',
 });
 
 function sendText(res, status, message, headOnly = false) {
