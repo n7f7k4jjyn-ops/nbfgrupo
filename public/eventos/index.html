@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11121d">
+  <meta name="description" content="Acesse os eventos da Verdant Curitiba no Facebook.">
+  <title>Eventos | Verdant</title>
+  <link rel="icon" href="/assets/verdant-logo-branca.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/legal-pages.css">
+  <style>
+    .events-intro {
+      max-width: 590px;
+      margin: 16px auto 28px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+      text-align: center;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .event-card {
+      --event-color: #59c9ed;
+      display: flex;
+      min-height: 178px;
+      flex-direction: column;
+      padding: 18px;
+      overflow: hidden;
+      border: 1px solid var(--stroke);
+      border-radius: 13px;
+      background:
+        radial-gradient(ellipse at 100% 0%, color-mix(in srgb, var(--event-color) 13%, transparent), transparent 62%),
+        var(--surface);
+      box-shadow: 0 12px 28px rgba(0,0,0,.12);
+      transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+    }
+
+    .event-card:nth-child(2) { --event-color: #b889f3; }
+    .event-card:nth-child(3) { --event-color: #ed7eb8; }
+    .event-card:nth-child(4) { --event-color: #f0ae62; }
+    .event-card:nth-child(5) { --event-color: #76d6a8; }
+
+    .event-card:hover {
+      transform: translateY(-3px);
+      border-color: color-mix(in srgb, var(--event-color) 54%, transparent);
+      box-shadow: 0 16px 34px rgba(0,0,0,.2);
+    }
+
+    .event-number {
+      color: var(--event-color);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .13em;
+    }
+
+    .event-card h2 {
+      margin: 12px 0 6px;
+      color: inherit;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .event-card p {
+      flex: 1;
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .event-link {
+      display: flex;
+      min-height: 42px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 0 13px;
+      border: 1px solid color-mix(in srgb, var(--event-color) 44%, transparent);
+      border-radius: 9px;
+      color: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background .15s ease, border-color .15s ease;
+    }
+
+    .event-link:hover {
+      border-color: var(--event-color);
+      background: color-mix(in srgb, var(--event-color) 12%, transparent);
+    }
+
+    .event-link span:last-child { color: var(--event-color); font-size: 17px; }
+
+    body.light .event-card { border-color: rgba(37,54,78,.18); }
+    body.light .event-card h2 { color: #17243a; }
+    body.light .event-card p { color: #46536a; }
+    body.light .event-link { color: #26334a; }
+
+    .event-link:focus-visible { outline: 3px solid #8bdcff; outline-offset: 3px; }
+
+    @media (max-width: 600px) {
+      .events-intro { margin: 13px auto 22px; font-size: 13px; }
+      .events-grid { grid-template-columns: 1fr; gap: 11px; }
+      .event-card { min-height: 158px; padding: 16px; }
+      .event-card h2 { margin-top: 9px; font-size: 16px; }
+      .event-card p { margin-bottom: 13px; font-size: 12px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .event-card:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="topbar">
+        <img class="brand" src="/assets/verdant-logo-branca.png" data-dark-logo="/assets/verdant-logo-branca.png" data-light-logo="/assets/verdant-logo-preta.png" alt="Verdant Curitiba">
+        <button class="theme-toggle" type="button" aria-pressed="false"><span aria-hidden="true">☼</span><span>Tema claro</span></button>
+      </div>
+      <p class="language"><span aria-hidden="true">文</span> &nbsp;PT-BR</p>
+      <div class="spectrum" aria-hidden="true"></div>
+    </header>
+    <main class="document">
+      <h1>Eventos da Verdant</h1>
+      <p class="events-intro">Encontre seu próximo rolê. Escolha um evento para ver a programação e mais informações no Facebook.</p>
+      <section class="events-grid" aria-label="Eventos da Verdant">
+        <article class="event-card">
+          <span class="event-number">EVENTO · 01</span>
+          <h2>Evento 01</h2>
+          <p>Consulte a data, a programação e as informações oficiais deste evento.</p>
+          <a class="event-link" href="https://www.facebook.com/share/1M6s8FcqSv/" target="_blank" rel="noopener noreferrer" aria-label="Abrir evento 01 no Facebook"><span>Ver evento no Facebook</span><span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="event-card">
+          <span class="event-number">EVENTO · 02</span>
+          <h2>Evento 02</h2>
+          <p>Consulte a data, a programação e as informações oficiais deste evento.</p>
+          <a class="event-link" href="https://www.facebook.com/share/1DZD9sqRaU/" target="_blank" rel="noopener noreferrer" aria-label="Abrir evento 02 no Facebook"><span>Ver evento no Facebook</span><span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="event-card">
+          <span class="event-number">EVENTO · 03</span>
+          <h2>Evento 03</h2>
+          <p>Consulte a data, a programação e as informações oficiais deste evento.</p>
+          <a class="event-link" href="https://www.facebook.com/share/1HqZ1DJrMm/" target="_blank" rel="noopener noreferrer" aria-label="Abrir evento 03 no Facebook"><span>Ver evento no Facebook</span><span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="event-card">
+          <span class="event-number">EVENTO · 04</span>
+          <h2>Evento 04</h2>
+          <p>Consulte a data, a programação e as informações oficiais deste evento.</p>
+          <a class="event-link" href="https://www.facebook.com/share/1BpoHsHqbW/" target="_blank" rel="noopener noreferrer" aria-label="Abrir evento 04 no Facebook"><span>Ver evento no Facebook</span><span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="event-card">
+          <span class="event-number">EVENTO · 05</span>
+          <h2>Evento 05</h2>
+          <p>Consulte a data, a programação e as informações oficiais deste evento.</p>
+          <a class="event-link" href="https://www.facebook.com/share/19Zu8bRN9P/" target="_blank" rel="noopener noreferrer" aria-label="Abrir evento 05 no Facebook"><span>Ver evento no Facebook</span><span aria-hidden="true">↗</span></a>
+        </article>
+      </section>
+    </main>
+    <nav class="legal" aria-label="Informações legais">
+      <a href="/politica-de-privacidade.html">Política de Privacidade</a>
+      <a href="/termos-de-uso.html">Termos de Uso</a>
+      <a href="/exclusao-de-dados.html">Exclusão de Dados</a>
+    </nav>
+    <div class="credit"><span>Desenvolvido por</span><img src="/assets/scope-connect-logo.png" alt="Scope Connect"></div>
+  </div>
+  <script src="/assets/legal-pages.js"></script>
+</body>
+</html>

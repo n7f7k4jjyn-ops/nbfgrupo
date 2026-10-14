@@ -64,6 +64,7 @@ const server = http.createServer((req, res) => {
 
   if (pathname === '/') pathname = '/index.html';
   if (pathname === '/listas' || pathname === '/listas/') pathname = '/listas/index.html';
+  if (pathname === '/eventos' || pathname === '/eventos/') pathname = '/eventos/index.html';
   if (pathname.endsWith('/')) pathname += 'index.html';
 
   const filePath = path.resolve(PUBLIC_ROOT, `.${pathname}`);
