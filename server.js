@@ -23,6 +23,7 @@ const SHORT_LINKS = Object.freeze({
   '/aniversario': 'https://connect.verdantcwb.com/lista/aniversario',
   '/dj': 'https://connect.verdantcwb.com/lista/djs',
   '/influencers': 'https://connect.verdantcwb.com/lista/influencers',
+  '/vip': 'https://connect.verdantcwb.com/lista/vip',
 });
 
 function sendText(res, status, message, headOnly = false) {
