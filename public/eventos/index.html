@@ -106,28 +106,14 @@
       white-space: nowrap;
     }
 
-    .event-arrow {
-      display: grid;
-      width: 32px;
-      height: 32px;
-      flex: 0 0 32px;
-      place-items: center;
-      border: 1px solid var(--stroke);
-      border-radius: 50%;
-      color: var(--event-color);
-      font-size: 15px;
-      transition: background .18s ease, transform .18s ease;
-    }
-
     .event-cover:hover {
       transform: translateY(-2px);
       border-color: rgba(255,255,255,.14);
       box-shadow: 0 12px 28px rgba(0,0,0,.22);
     }
 
-    .event-cover:hover .event-arrow { background: rgba(255,255,255,.06); transform: translateX(2px); }
     body.light .event-cover { border-color: rgba(37,54,78,.12); box-shadow: 0 8px 22px rgba(41,55,79,.1); }
-    body.light .event-copy strong { color: #17243a; }
+    .document a.event-cover { color: inherit; }
     .event-cover:focus-visible { outline: 3px solid #8bdcff; outline-offset: 3px; }
 
     @media (max-width: 600px) {
@@ -137,7 +123,6 @@
       .event-cover img, .event-cover-placeholder { width: 62px; height: 62px; flex-basis: 62px; }
       .event-copy strong { font-size: 13px; }
       .event-copy small { font-size: 10px; }
-      .event-arrow { width: 29px; height: 29px; flex-basis: 29px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -163,28 +148,24 @@
           <a class="event-cover" href="https://www.facebook.com/share/1M6s8FcqSv/" target="_blank" rel="noopener noreferrer" aria-label="Abrir evento Start Me Up no Facebook">
             <img src="/assets/start-me-up-pop-funk.jpg" alt="Capa do evento Start Me Up">
             <span class="event-copy"><strong>Start Me Up</strong><small>Quinta · 15 de outubro · 22h</small></span>
-            <span class="event-arrow" aria-hidden="true">↗</span>
           </a>
         </article>
         <article class="event-card">
           <a class="event-cover" href="https://www.facebook.com/share/1DZD9sqRaU/" target="_blank" rel="noopener noreferrer" aria-label="Abrir evento Frenétika no Facebook">
             <img src="/assets/frenetika-land-2026.jpg" alt="Capa do evento Frenétika">
             <span class="event-copy"><strong>Frenétika</strong><small>Sexta · 16 de outubro · 22h</small></span>
-            <span class="event-arrow" aria-hidden="true">↗</span>
           </a>
         </article>
         <article class="event-card">
           <a class="event-cover" href="https://www.facebook.com/share/1HqZ1DJrMm/" target="_blank" rel="noopener noreferrer" aria-label="Abrir evento Terashima Ascension no Facebook">
             <img src="/assets/terashima-ascension-main-2026.jpg" alt="Capa do evento Terashima Ascension">
             <span class="event-copy"><strong>Terashima Ascension</strong><small>Sábado · 17 de outubro · 22h</small></span>
-            <span class="event-arrow" aria-hidden="true">↗</span>
           </a>
         </article>
         <article class="event-card">
           <a class="event-cover" href="https://www.facebook.com/share/1BpoHsHqbW/" target="_blank" rel="noopener noreferrer" aria-label="Abrir evento Ressaka no Facebook">
             <img src="/assets/ressaka-poster.jpg" alt="Capa do evento Ressaka">
             <span class="event-copy"><strong>Ressaka</strong><small>Domingo · 18 de outubro · 19h</small></span>
-            <span class="event-arrow" aria-hidden="true">↗</span>
           </a>
         </article>
         <article class="event-card">
@@ -195,7 +176,6 @@
               <span>SÁBADO · 24 OUT</span>
             </span>
             <span class="event-copy"><strong>GOSTOSO</strong><small>Sábado · 24 de outubro</small></span>
-            <span class="event-arrow" aria-hidden="true">↗</span>
           </a>
         </article>
       </section>
