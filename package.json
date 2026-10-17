@@ -5,7 +5,8 @@
   "description": "Site semanal da Verdant Curitiba — aplicação Node.js para Hostinger",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "node -e \"require('./lib/meta-pixel.cjs').preparePixelHtml('public')\""
   },
   "engines": {
     "node": "22.x"
