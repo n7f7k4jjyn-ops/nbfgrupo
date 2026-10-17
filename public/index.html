@@ -1394,10 +1394,10 @@ body.verdant-weekly-theme main{overflow-x:clip!important}
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',update,{once:true});else update();
  setInterval(update,6e4);
 })();</script>
-<style id="hero-rotator-style">.hero-copy,.hero-art-trigger{transition:opacity .3s ease}.skyland-hero.is-swapping .hero-copy,.skyland-hero.is-swapping .hero-art-trigger{opacity:0}.hero-dots{display:flex;justify-content:center;gap:8px;margin-top:12px}.hero-dots button{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:#ffffff55;cursor:pointer}.hero-dots button[aria-current="true"]{background:#55e7ff;transform:scale(1.25)}@media(prefers-reduced-motion:reduce){.hero-copy,.hero-art-trigger{transition:none}}</style>
+<style id="hero-rotator-style">.skyland-hero .hero-copy h1.hero-long{font-size:clamp(40px,8vw,96px)!important;white-space:nowrap;letter-spacing:-.04em!important}.hero-copy,.hero-art-trigger{transition:opacity .3s ease}.skyland-hero.is-swapping .hero-copy,.skyland-hero.is-swapping .hero-art-trigger{opacity:0}.hero-dots{display:flex;justify-content:center;gap:8px;margin-top:12px}.hero-dots button{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:#ffffff55;cursor:pointer}.hero-dots button[aria-current="true"]{background:#55e7ff;transform:scale(1.25)}@media(prefers-reduced-motion:reduce){.hero-copy,.hero-art-trigger{transition:none}}</style>
 <script>(function(){
  const slides=[
-  {date:'2026-10-16',end:6,panel:'frenetika',img:'frenetika-sky-2026.jpg',alt:'Cartaz da Frenétika, sexta 16 de outubro',kicker:'FRENÉTIKA · SEXTA 16 OUT',h1:'FRENÉ<br><em>TIKA</em>',intro:'Porque depois de começar, a gente entra no modo FRENÉTIKA e não desacelera! Energia lá no alto, 2h de open bar e zero intenção de parar. Na LAND, pop, funk e megafunk. Na SKY, o tribal house comanda a pista.',when:'SEXTA · 16 OUT · 22H',tags:'TRIBAL · POP · FUNK · EDM',href:'https://www.facebook.com/share/1MvwDruqf2/'},
+  {date:'2026-10-16',end:6,panel:'frenetika',img:'frenetika-sky-2026.jpg',alt:'Cartaz da Frenétika, sexta 16 de outubro',kicker:'FRENÉTIKA · SEXTA 16 OUT',h1:'FRENÉTIKA',long:true,intro:'Porque depois de começar, a gente entra no modo FRENÉTIKA e não desacelera! Energia lá no alto, 2h de open bar e zero intenção de parar. Na LAND, pop, funk e megafunk. Na SKY, o tribal house comanda a pista.',when:'SEXTA · 16 OUT · 22H',tags:'TRIBAL · POP · FUNK · EDM',href:'https://www.facebook.com/share/1MvwDruqf2/'},
   {date:'2026-10-17',end:7,panel:'terashima-ascension',img:'terashima-ascension-main-2026.jpg',alt:'Cartaz de SKYLAND ASCENSION, sábado 17 de outubro',kicker:'SKYLAND ASCENSION · SÁBADO 17 OUT',h1:'SKYLAND<br><em>ASCENSION</em>',intro:'Depois de passar por São Paulo e Florianópolis, a SKYLAND ASCENSION chega a Curitiba para uma edição especial na Verdant. Tribal House, Melodic Techno e uma experiência de música, cenário, luz e visuais. Uma nova cidade. Uma nova pista. Uma nova ascensão.',when:'SÁBADO · 17 OUT · 22H',tags:'TRIBAL · POP · FUNK · EDM',href:'https://www.facebook.com/share/1DZP9q9uod/'},
   {date:'2026-10-18',end:3,panel:'ressaka',img:'ressaka-main-2026.jpg',alt:'Cartaz de Ressaka, domingo 18 de outubro',kicker:'RESSAKA · DOMINGO 18 OUT',h1:'RESSAKA',intro:'Domingo é dia de Ressaka, mas aqui a gente cura na pista! Open bar das 19h às 21h e muito pop, funk e megafunk na SKY. Vem fechar o fim de semana do melhor jeito!',when:'DOMINGO · 18 OUT · 19H',tags:'POP · FUNK · MEGAFUNK',href:'https://www.facebook.com/share/1ECRwALqie/'}
  ];
@@ -1412,6 +1412,7 @@ body.verdant-weekly-theme main{overflow-x:clip!important}
   const render=s=>{
    copy.querySelector('.kicker').textContent=s.kicker;
    copy.querySelector('h1').innerHTML=s.h1;
+   copy.querySelector('h1').classList.toggle('hero-long',!!s.long);
    copy.querySelector('.intro').textContent=s.intro;
    copy.querySelector('.when b').textContent=s.when;
    copy.querySelector('.when span').textContent=s.tags;
