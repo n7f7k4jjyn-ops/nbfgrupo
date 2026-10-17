@@ -1432,7 +1432,7 @@ body.verdant-weekly-theme main{overflow-x:clip!important}
   };
   const start=()=>{
    stop();
-   if(active.length<2||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+   if(active.length<2)return;
    timer=setInterval(()=>show((index+1)%active.length,true),7000);
   };
   const stop=()=>{clearInterval(timer);timer=null};
@@ -1445,8 +1445,7 @@ body.verdant-weekly-theme main{overflow-x:clip!important}
    show(index,false);
    start();
   };
-  hero.addEventListener('mouseenter',stop);hero.addEventListener('mouseleave',start);
-  hero.addEventListener('focusin',stop);hero.addEventListener('focusout',start);
+  hero.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')stop()});hero.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')start()});
   build();
   setInterval(()=>{if(live().length!==active.length)build()},6e4);
  };
