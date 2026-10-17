@@ -1395,12 +1395,20 @@ body.verdant-weekly-theme main{overflow-x:clip!important}
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',update,{once:true});else update();
  setInterval(update,6e4);
 })();</script>
-<style id="hero-rotator-style">.skyland-hero .hero-copy h1.hero-long{font-size:clamp(40px,8vw,96px)!important;white-space:nowrap;letter-spacing:-.04em!important}.hero-copy,.hero-art-trigger{transition:opacity .3s ease}.skyland-hero.is-swapping .hero-copy,.skyland-hero.is-swapping .hero-art-trigger{opacity:0}.hero-dots{display:flex;justify-content:center;gap:8px;margin-top:12px}.hero-dots button{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:#ffffff55;cursor:pointer}.hero-dots button[aria-current="true"]{background:#55e7ff;transform:scale(1.25)}@media(prefers-reduced-motion:reduce){.hero-copy,.hero-art-trigger{transition:none}}</style>
+<style id="hero-rotator-style">.skyland-hero .hero-copy h1.hero-long{font-size:clamp(40px,8vw,96px)!important;white-space:nowrap;letter-spacing:-.04em!important}.hero-copy,.hero-art-trigger{transition:opacity .3s ease}.skyland-hero.is-swapping .hero-copy,.skyland-hero.is-swapping .hero-art-trigger{opacity:0}.hero-dots{display:flex;justify-content:center;gap:8px;margin-top:12px}.hero-dots button{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:#ffffff55;cursor:pointer}.hero-dots button[aria-current="true"]{background:#55e7ff;transform:scale(1.25)}.hero-status{display:inline-block;margin:0 0 10px;padding:6px 12px;border-radius:999px;font-weight:800;font-size:12px;line-height:1;font-family:inherit;letter-spacing:.12em;color:#06121a;background:#55e7ff;box-shadow:0 0 18px #55e7ff88}.hero-status[hidden]{display:none}.hero-status.is-live{color:#fff;background:#e5173f;box-shadow:0 0 20px #e5173f;animation:heroLive 1.4s ease-in-out infinite}@keyframes heroLive{50%{opacity:.65}}
+.skyland-hero .hero-art-trigger{border-radius:18px;transition:box-shadow .4s ease,opacity .3s ease}
+.skyland-hero[data-hero-theme="frenetika"] .hero-art-trigger{box-shadow:0 0 0 2px #ff7a1a,0 12px 50px #ff7a1a77}.skyland-hero[data-hero-theme="frenetika"] .kicker{color:#ff9a45}
+.skyland-hero[data-hero-theme="skyland"] .hero-art-trigger{box-shadow:0 0 0 2px #a855f7,0 12px 50px #a855f777}.skyland-hero[data-hero-theme="skyland"] .kicker{color:#c58bff}
+.skyland-hero[data-hero-theme="ressaka"] .hero-art-trigger{box-shadow:0 0 0 2px #3b9cff,0 12px 50px #3b9cff77}.skyland-hero[data-hero-theme="ressaka"] .kicker{color:#7dc0ff}
+.skyland-hero[data-hero-theme="frenetika"] .hero-dots button[aria-current="true"]{background:#ff7a1a}.skyland-hero[data-hero-theme="skyland"] .hero-dots button[aria-current="true"]{background:#a855f7}.skyland-hero[data-hero-theme="ressaka"] .hero-dots button[aria-current="true"]{background:#3b9cff}
+.hero-dots button{position:relative}.hero-dots button::after{content:"";position:absolute;inset:-10px}
+@media(max-width:760px){.hero-status{font-size:11px;padding:6px 10px}.skyland-hero .hero-art-trigger{border-radius:14px}}
+@media(prefers-reduced-motion:reduce){.hero-copy,.hero-art-trigger{transition:none}.hero-status.is-live{animation:none}}</style>
 <script>(function(){
  const slides=[
-  {date:'2026-10-16',end:6,panel:'frenetika',img:'frenetika-sky-2026.jpg',alt:'Cartaz da Frenétika, sexta 16 de outubro',kicker:'FRENÉTIKA · SEXTA 16 OUT',h1:'FRENÉTIKA',long:true,intro:'Porque depois de começar, a gente entra no modo FRENÉTIKA e não desacelera! Energia lá no alto, 2h de open bar e zero intenção de parar. Na LAND, pop, funk e megafunk. Na SKY, o tribal house comanda a pista.',when:'SEXTA · 16 OUT · 22H',tags:'TRIBAL · POP · FUNK · EDM',href:'https://www.facebook.com/share/1MvwDruqf2/'},
-  {date:'2026-10-17',end:7,panel:'terashima-ascension',img:'terashima-ascension-main-2026.jpg',alt:'Cartaz de SKYLAND ASCENSION, sábado 17 de outubro',kicker:'SKYLAND ASCENSION · SÁBADO 17 OUT',h1:'SKYLAND<br><em>ASCENSION</em>',intro:'Depois de passar por São Paulo e Florianópolis, a SKYLAND ASCENSION chega a Curitiba para uma edição especial na Verdant. Tribal House, Melodic Techno e uma experiência de música, cenário, luz e visuais. Uma nova cidade. Uma nova pista. Uma nova ascensão.',when:'SÁBADO · 17 OUT · 22H',tags:'TRIBAL · POP · FUNK · EDM',href:'https://www.facebook.com/share/1DZP9q9uod/'},
-  {date:'2026-10-18',end:3,panel:'ressaka',img:'ressaka-main-2026.jpg',alt:'Cartaz de Ressaka, domingo 18 de outubro',kicker:'RESSAKA · DOMINGO 18 OUT',h1:'RESSAKA',intro:'Domingo é dia de Ressaka, mas aqui a gente cura na pista! Open bar das 19h às 21h e muito pop, funk e megafunk na SKY. Vem fechar o fim de semana do melhor jeito!',when:'DOMINGO · 18 OUT · 19H',tags:'POP · FUNK · MEGAFUNK',href:'https://www.facebook.com/share/1ECRwALqie/'}
+  {date:'2026-10-16',start:22,theme:'frenetika',end:6,panel:'frenetika',img:'frenetika-sky-2026.jpg',alt:'Cartaz da Frenétika, sexta 16 de outubro',kicker:'FRENÉTIKA · SEXTA 16 OUT',h1:'FRENÉTIKA',long:true,intro:'Porque depois de começar, a gente entra no modo FRENÉTIKA e não desacelera! Energia lá no alto, 2h de open bar e zero intenção de parar. Na LAND, pop, funk e megafunk. Na SKY, o tribal house comanda a pista.',when:'SEXTA · 16 OUT · 22H',tags:'TRIBAL · POP · FUNK · EDM',href:'https://www.facebook.com/share/1MvwDruqf2/'},
+  {date:'2026-10-17',start:22,theme:'skyland',end:7,panel:'terashima-ascension',img:'terashima-ascension-main-2026.jpg',alt:'Cartaz de SKYLAND ASCENSION, sábado 17 de outubro',kicker:'SKYLAND ASCENSION · SÁBADO 17 OUT',h1:'SKYLAND<br><em>ASCENSION</em>',intro:'Depois de passar por São Paulo e Florianópolis, a SKYLAND ASCENSION chega a Curitiba para uma edição especial na Verdant. Tribal House, Melodic Techno e uma experiência de música, cenário, luz e visuais. Uma nova cidade. Uma nova pista. Uma nova ascensão.',when:'SÁBADO · 17 OUT · 22H',tags:'TRIBAL · POP · FUNK · EDM',href:'https://www.facebook.com/share/1DZP9q9uod/'},
+  {date:'2026-10-18',start:19,theme:'ressaka',end:3,panel:'ressaka',img:'ressaka-main-2026.jpg',alt:'Cartaz de Ressaka, domingo 18 de outubro',kicker:'RESSAKA · DOMINGO 18 OUT',h1:'RESSAKA',long:true,intro:'Domingo é dia de Ressaka, mas aqui a gente cura na pista! Open bar das 19h às 21h e muito pop, funk e megafunk na SKY. Vem fechar o fim de semana do melhor jeito!',when:'DOMINGO · 18 OUT · 19H',tags:'POP · FUNK · MEGAFUNK',href:'https://www.facebook.com/share/1ECRwALqie/'}
  ];
  const init=()=>{
   const hero=document.querySelector('.skyland-hero');
@@ -1410,7 +1418,17 @@ body.verdant-weekly-theme main{overflow-x:clip!important}
   hero.querySelector('.hero-art').appendChild(dotsBox);
   let active=[],index=0,timer=null;
   const live=()=>slides.filter(s=>{const [y,m,d]=s.date.split('-').map(Number);return Date.now()<Date.UTC(y,m-1,d+1,s.end+3)});
+  const status=hero.querySelector('.hero-status')||copy.insertAdjacentElement('afterbegin',Object.assign(document.createElement('span'),{className:'hero-status'}));
+  const setStatus=s=>{
+   const [y,m,d]=s.date.split('-').map(Number);
+   const day=Date.UTC(y,m-1,d),now=Date.now(),sp=new Date(now-3*36e5),today=Date.UTC(sp.getUTCFullYear(),sp.getUTCMonth(),sp.getUTCDate());
+   let t='';
+   if(now>=day+(s.start+3)*36e5)t='● ACONTECENDO AGORA';else if(today===day)t='É HOJE!';else if(today===day-864e5)t='É AMANHÃ!';
+   status.textContent=t;status.hidden=!t;status.classList.toggle('is-live',t.startsWith('●'));
+  };
   const render=s=>{
+   hero.dataset.heroTheme=s.theme;
+   setStatus(s);
    copy.querySelector('.kicker').textContent=s.kicker;
    copy.querySelector('h1').innerHTML=s.h1;
    copy.querySelector('h1').classList.toggle('hero-long',!!s.long);
@@ -1447,7 +1465,10 @@ body.verdant-weekly-theme main{overflow-x:clip!important}
   };
   hero.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')stop()});hero.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')start()});
   build();
-  setInterval(()=>{if(live().length!==active.length)build()},6e4);
+  setInterval(()=>{if(live().length!==active.length)build();else if(active[index])setStatus(active[index])},6e4);
+  let sx=null;
+  hero.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+  hero.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>50&&active.length>1){show((index+(dx<0?1:active.length-1))%active.length,true);start()}},{passive:true});
  };
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();</script>
