@@ -3,7 +3,7 @@
 const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
-const { createPixelInjection } = require('./lib/meta-pixel.cjs');
+const { preparePixelHtml } = require('./lib/meta-pixel.cjs');
 
 const PUBLIC_ROOT = path.resolve(__dirname, 'public');
 const PORT = Number.parseInt(process.env.PORT || '3000', 10);
@@ -82,7 +82,7 @@ const server = http.createServer((req, res) => {
     const isHtml = extension === '.html';
     res.writeHead(200, {
       'Content-Type': MIME_TYPES[extension] || 'application/octet-stream',
-      ...(!isHtml ? { 'Content-Length': stat.size } : {}),
+      'Content-Length': stat.size,
       'Cache-Control': isHtml ? 'no-cache' : 'public, max-age=3600',
       'X-Content-Type-Options': 'nosniff',
       'Referrer-Policy': 'strict-origin-when-cross-origin',
@@ -96,20 +96,16 @@ const server = http.createServer((req, res) => {
       if (!res.headersSent) sendText(res, 500, 'Erro interno do servidor');
       else res.destroy();
     });
-    if (isHtml) {
-      const injection = createPixelInjection();
-      injection.on('error', () => res.destroy());
-      stream.pipe(injection).pipe(res);
-    } else {
-      stream.pipe(res);
-    }
+    stream.pipe(res);
   });
 });
 
 if (require.main === module) {
+  preparePixelHtml(PUBLIC_ROOT);
   server.listen(PORT, '0.0.0.0', () => {
     console.log(`Verdant pronta na porta ${PORT}`);
   });
 }
 
 module.exports = server;
+

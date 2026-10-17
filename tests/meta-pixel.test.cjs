@@ -2,31 +2,36 @@
 
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const { Readable } = require('node:stream');
-const { readFileSync } = require('node:fs');
+const fs = require('node:fs');
+const { readFileSync } = fs;
+const path = require('node:path');
+const os = require('node:os');
 const { runInNewContext } = require('node:vm');
-const { createPixelInjection } = require('../lib/meta-pixel.cjs');
+const { preparePixelHtml, PIXEL_TAG } = require('../lib/meta-pixel.cjs');
 
-test('inserts one script across arbitrary byte boundaries and preserves the HTML', async () => {
-  const html = '<html><head><title>Verdant — São Francisco</title></HEAD><body>Olá! 🌈</body></html>';
-  const bytes = Buffer.from(html);
-  for (const size of [1, 2, 7, 64, 65536]) {
-    const chunks = [];
-    for (let i = 0; i < bytes.length; i += size) chunks.push(bytes.subarray(i, i + size));
-    const output = [];
-    for await (const chunk of Readable.from(chunks).pipe(createPixelInjection())) output.push(chunk);
-    const result = Buffer.concat(output).toString();
-    const tag = '<script defer src="/assets/meta-pixel.js?v=4208900759401820"></script>';
-    assert.equal(result.split(tag).length, 2);
-    assert.equal(result.replace(tag, ''), html);
-    assert.ok(result.indexOf(tag) < result.indexOf('</HEAD>'));
+test('prepares all nested HTML pages once and preserves the original content and assets', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'verdant-pixel-'));
+  try {
+    fs.mkdirSync(path.join(root, 'listas'));
+    const html = '<html><head><title>Verdant — São Francisco</title></HEAD><body>Olá! 🌈</body></html>';
+    const files = ['index.html', 'listas/index.html', 'politica-de-privacidade.html'];
+    for (const file of files) fs.writeFileSync(path.join(root, file), html);
+    fs.writeFileSync(path.join(root, 'no-head.html'), 'sem cabeçalho');
+    const asset = Buffer.from([0, 255, 128, 42]);
+    fs.writeFileSync(path.join(root, 'logo.png'), asset);
+    assert.equal(preparePixelHtml(root), 3);
+    assert.equal(preparePixelHtml(root), 0);
+    for (const file of files) {
+      const result = fs.readFileSync(path.join(root, file), 'utf8');
+      assert.equal(result.split(PIXEL_TAG).length, 2);
+      assert.equal(result.replace(PIXEL_TAG, ''), html);
+      assert.ok(result.indexOf(PIXEL_TAG) < result.indexOf('</HEAD>'));
+    }
+    assert.equal(fs.readFileSync(path.join(root, 'no-head.html'), 'utf8'), 'sem cabeçalho');
+    assert.deepEqual(fs.readFileSync(path.join(root, 'logo.png')), asset);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
   }
-});
-
-test('leaves responses without an HTML head unchanged', async () => {
-  const output = [];
-  for await (const chunk of Readable.from(['sem ', 'cabeçalho']).pipe(createPixelInjection())) output.push(chunk);
-  assert.equal(Buffer.concat(output).toString(), 'sem cabeçalho');
 });
 
 test('queues only init and PageView once even if the website script is loaded twice', () => {
