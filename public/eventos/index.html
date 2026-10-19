@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#11121d">
   <meta name="description" content="Acesse os eventos da Verdant Curitiba no Facebook.">
   <title>Eventos | Verdant</title>
-  <link rel="icon" href="/assets/verdant-logo-branca.png">
+  <link rel="icon" type="image/png" href="/assets/verdant-favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -39,11 +39,12 @@
     .event-card:nth-child(5) { --event-color: #76d6a8; }
 
     .event-cover {
-      display: flex;
-      min-height: 82px;
+      display: grid;
+      grid-template-columns: 116px 1fr;
+      min-height: 116px;
       align-items: center;
-      gap: 14px;
-      padding: 8px 14px 8px 8px;
+      gap: 16px;
+      padding: 8px 16px 8px 8px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.045);
       border-radius: 15px;
@@ -56,10 +57,9 @@
 
     .event-cover img {
       display: block;
-      width: 64px;
-      height: 64px;
-      flex: 0 0 64px;
-      border-radius: 9px;
+      width: 116px;
+      height: 100px;
+      border-radius: 10px;
       object-fit: cover;
       object-position: center;
     }
@@ -119,10 +119,10 @@
     @media (max-width: 600px) {
       .events-intro { margin: 10px auto 20px; font-size: 13px; }
       .events-grid { gap: 10px; }
-      .event-cover { min-height: 76px; gap: 12px; padding: 6px 11px 6px 6px; border-radius: 13px; }
-      .event-cover img, .event-cover-placeholder { width: 62px; height: 62px; flex-basis: 62px; }
+      .event-cover { grid-template-columns: 92px 1fr; min-height: 98px; gap: 12px; padding: 6px 11px 6px 6px; border-radius: 13px; }
+      .event-cover img { width: 92px; height: 86px; }
       .event-copy strong { font-size: 13px; }
-      .event-copy small { font-size: 10px; }
+      .event-copy small { font-size: 10px; white-space: normal; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -142,40 +142,30 @@
     </header>
     <main class="document">
       <h1>Eventos da Verdant</h1>
-      <p class="events-intro">Encontre seu próximo rolê. Escolha um evento para ver a programação e mais informações no Facebook.</p>
+      <p class="events-intro">Programação de 22 a 25 de outubro. Escolha um evento para ver todos os detalhes.</p>
       <section class="events-grid" aria-label="Eventos da Verdant">
         <article class="event-card">
-          <a class="event-cover" href="https://www.facebook.com/share/1M6s8FcqSv/" target="_blank" rel="noopener noreferrer" aria-label="Abrir evento Start Me Up no Facebook">
-            <img src="/assets/start-me-up-pop-funk.jpg" alt="Capa do evento Start Me Up">
-            <span class="event-copy"><strong>Start Me Up</strong><small>Quinta · 15 de outubro · 22h</small></span>
+          <a class="event-cover" href="/modofunk" aria-label="Saiba mais sobre MODO F*NK">
+            <img src="https://drive.google.com/thumbnail?id=1k8GOBTiRMudixs3uJrQD-bEKul5dFlb8&sz=w1200" alt="Banner MODO F*NK">
+            <span class="event-copy"><strong>MODO F*NK</strong><small>Quinta · 22 de outubro · 22h–06h</small></span>
           </a>
         </article>
         <article class="event-card">
-          <a class="event-cover" href="https://www.facebook.com/share/1DZD9sqRaU/" target="_blank" rel="noopener noreferrer" aria-label="Abrir evento Frenétika no Facebook">
-            <img src="/assets/frenetika-land-2026.jpg" alt="Capa do evento Frenétika">
-            <span class="event-copy"><strong>Frenétika</strong><small>Sexta · 16 de outubro · 22h</small></span>
+          <a class="event-cover" href="/frenetika" aria-label="Saiba mais sobre FRENÉTIKA">
+            <img src="https://drive.google.com/thumbnail?id=12-Ic2rwxp49S91oUKItsAyp_-z8MU1UX&sz=w1200" alt="Banner FRENÉTIKA">
+            <span class="event-copy"><strong>FRENÉTIKA</strong><small>Sexta · 23 de outubro · 22h–06h</small></span>
           </a>
         </article>
         <article class="event-card">
-          <a class="event-cover" href="https://www.facebook.com/share/1HqZ1DJrMm/" target="_blank" rel="noopener noreferrer" aria-label="Abrir evento Terashima Ascension no Facebook">
-            <img src="/assets/terashima-ascension-main-2026.jpg" alt="Capa do evento Terashima Ascension">
-            <span class="event-copy"><strong>Terashima Ascension</strong><small>Sábado · 17 de outubro · 22h</small></span>
+          <a class="event-cover" href="/gostoso" aria-label="Saiba mais sobre GOSTOSO">
+            <img src="https://drive.google.com/thumbnail?id=1PKdpAqrqiProc-EXuPENF7xkrfDgNBBS&sz=w1200" alt="Banner GOSTOSO">
+            <span class="event-copy"><strong>GOSTOSO</strong><small>Sábado · 24 de outubro · 22h–07h</small></span>
           </a>
         </article>
         <article class="event-card">
-          <a class="event-cover" href="https://www.facebook.com/share/1BpoHsHqbW/" target="_blank" rel="noopener noreferrer" aria-label="Abrir evento Ressaka no Facebook">
-            <img src="/assets/ressaka-poster.jpg" alt="Capa do evento Ressaka">
-            <span class="event-copy"><strong>Ressaka</strong><small>Domingo · 18 de outubro · 19h</small></span>
-          </a>
-        </article>
-        <article class="event-card">
-          <a class="event-cover" href="https://www.facebook.com/share/19Zu8bRN9P/" target="_blank" rel="noopener noreferrer" aria-label="Abrir evento GOSTOSO no Facebook">
-            <span class="event-cover-placeholder" role="img" aria-label="GOSTOSO, sábado 24 de outubro">
-              <span aria-hidden="true">🍌</span>
-              <span>GOSTOSO</span>
-              <span>SÁBADO · 24 OUT</span>
-            </span>
-            <span class="event-copy"><strong>GOSTOSO</strong><small>Sábado · 24 de outubro</small></span>
+          <a class="event-cover" href="/ressaka" aria-label="Saiba mais sobre RESSAKA">
+            <img src="https://drive.google.com/thumbnail?id=16kskGRUZcbgB2pZBDzV3hl5cQ772xB0G&sz=w1200" alt="Banner RESSAKA">
+            <span class="event-copy"><strong>RESSAKA</strong><small>Domingo · 25 de outubro · 19h–03h</small></span>
           </a>
         </article>
       </section>
