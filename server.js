@@ -46,8 +46,10 @@ const server = http.createServer((req, res) => {
   }
 
   let pathname;
+  let requestUrl;
   try {
-    pathname = decodeURIComponent(new URL(req.url || '/', 'http://localhost').pathname);
+    requestUrl = new URL(req.url || '/', 'http://localhost');
+    pathname = decodeURIComponent(requestUrl.pathname);
   } catch {
     return sendText(res, 400, 'Requisição inválida', headOnly);
   }
@@ -65,7 +67,9 @@ const server = http.createServer((req, res) => {
     return res.end();
   }
 
-  if (pathname === '/') pathname = '/index.html';
+  const isPrivatePreview = pathname === '/' && requestUrl.searchParams.get('preview') === 'scopeconnect';
+  if (isPrivatePreview) pathname = '/preview/index.html';
+  else if (pathname === '/') pathname = '/index.html';
   if (pathname === '/listas' || pathname === '/listas/') pathname = '/listas/index.html';
   if (pathname === '/eventos' || pathname === '/eventos/') pathname = '/eventos/index.html';
   if (pathname === '/scopeconnect' || pathname === '/scopeconnect/') pathname = '/scopeconnect/index.html';
@@ -85,14 +89,16 @@ const server = http.createServer((req, res) => {
 
     const extension = path.extname(filePath).toLowerCase();
     const isHtml = extension === '.html';
-    res.writeHead(200, {
+    const headers = {
       'Content-Type': MIME_TYPES[extension] || 'application/octet-stream',
       'Content-Length': stat.size,
       'Cache-Control': isHtml ? 'no-cache' : 'public, max-age=3600',
       'X-Content-Type-Options': 'nosniff',
       'Referrer-Policy': 'strict-origin-when-cross-origin',
       'X-Frame-Options': 'SAMEORIGIN',
-    });
+    };
+    if (isPrivatePreview) headers['X-Robots-Tag'] = 'noindex, nofollow';
+    res.writeHead(200, headers);
 
     if (headOnly) return res.end();
 
