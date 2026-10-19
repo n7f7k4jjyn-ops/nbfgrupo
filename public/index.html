@@ -1,182 +1,46 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#11121d">
-  <meta name="description" content="Acesse os eventos da Verdant Curitiba no Facebook.">
-  <title>Eventos | Verdant</title>
-  <link rel="icon" type="image/png" href="/assets/verdant-favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/legal-pages.css">
-  <style>
-    .events-intro {
-      max-width: 420px;
-      margin: 12px auto 22px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.65;
-      text-align: center;
-    }
-
-    .events-grid {
-      display: grid;
-      width: min(100%, 520px);
-      margin: 0 auto;
-      gap: 12px;
-    }
-
-    .event-card {
-      --event-color: #59c9ed;
-      min-width: 0;
-    }
-
-    .event-card:nth-child(2) { --event-color: #b889f3; }
-    .event-card:nth-child(3) { --event-color: #ed7eb8; }
-    .event-card:nth-child(4) { --event-color: #f0ae62; }
-    .event-card:nth-child(5) { --event-color: #76d6a8; }
-
-    .event-cover {
-      display: grid;
-      grid-template-columns: 116px 1fr;
-      min-height: 116px;
-      align-items: center;
-      gap: 16px;
-      padding: 8px 16px 8px 8px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.045);
-      border-radius: 15px;
-      background: var(--surface);
-      color: inherit;
-      text-decoration: none;
-      box-shadow: 0 8px 22px rgba(0,0,0,.14);
-      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
-    }
-
-    .event-cover img {
-      display: block;
-      width: 116px;
-      height: 100px;
-      border-radius: 10px;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .event-cover-placeholder {
-      display: flex;
-      width: 64px;
-      height: 64px;
-      flex: 0 0 64px;
-      align-items: center;
-      justify-content: center;
-      border-radius: 9px;
-      background:
-        radial-gradient(circle at 50% 35%, rgba(255,232,70,.32), transparent 38%),
-        linear-gradient(145deg, #173b36, #0b1722 72%);
-      color: #fff;
-      font-size: 24px;
-    }
-
-    .event-cover-placeholder span:not(:first-child) { display: none; }
-
-    .event-copy {
-      display: grid;
-      min-width: 0;
-      flex: 1;
-      gap: 5px;
-    }
-
-    .event-copy strong {
-      overflow: hidden;
-      color: inherit;
-      font-size: 14px;
-      font-weight: 800;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .event-copy small {
-      overflow: hidden;
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.4;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .event-cover:hover {
-      transform: translateY(-2px);
-      border-color: rgba(255,255,255,.14);
-      box-shadow: 0 12px 28px rgba(0,0,0,.22);
-    }
-
-    body.light .event-cover { border-color: rgba(37,54,78,.12); box-shadow: 0 8px 22px rgba(41,55,79,.1); }
-    .document a.event-cover { color: inherit; }
-    .event-cover:focus-visible { outline: 3px solid #8bdcff; outline-offset: 3px; }
-
-    @media (max-width: 600px) {
-      .events-intro { margin: 10px auto 20px; font-size: 13px; }
-      .events-grid { gap: 10px; }
-      .event-cover { grid-template-columns: 92px 1fr; min-height: 98px; gap: 12px; padding: 6px 11px 6px 6px; border-radius: 13px; }
-      .event-cover img { width: 92px; height: 86px; }
-      .event-copy strong { font-size: 13px; }
-      .event-copy small { font-size: 10px; white-space: normal; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .event-cover:hover { transform: none; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07070b">
+<meta name="description" content="Verdant Curitiba — programação de 22 a 25 de outubro em atualização.">
+<title>Verdant CWB · Em manutenção</title>
+<link rel="icon" type="image/png" href="/assets/verdant-favicon.png">
+<style>
+:root{--bg:#07070b;--text:#fff;--muted:#aaa8b8;--line:rgba(255,255,255,.13);--pink:#ff74d8;--violet:#8b7cff;--blue:#42b7ff;--gold:#ffd65a}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{min-height:100dvh;overflow-x:hidden;background:radial-gradient(circle at 12% 12%,rgba(66,183,255,.13),transparent 28%),radial-gradient(circle at 88% 18%,rgba(255,116,216,.14),transparent 30%),radial-gradient(circle at 65% 90%,rgba(255,214,90,.08),transparent 28%),#07070b}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:radial-gradient(rgba(255,255,255,.18) 1px,transparent 1px);background-size:46px 46px;mask-image:linear-gradient(to bottom,black,transparent 82%)}
+.shell{min-height:100dvh;display:grid;place-items:center;padding:32px 20px;position:relative}
+.card{width:min(980px,100%);min-height:min(720px,calc(100dvh - 64px));border:1px solid var(--line);border-radius:32px;background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.018));box-shadow:0 28px 110px rgba(0,0,0,.5);backdrop-filter:blur(18px);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(28px,5vw,62px)}
+.card:before{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(255,255,255,.07);border-radius:50%;right:-180px;top:-170px;box-shadow:0 0 0 54px rgba(255,255,255,.015),0 0 0 108px rgba(255,255,255,.01)}
+.topbar,.footer{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.verdant{width:clamp(150px,22vw,230px);height:auto;object-fit:contain}.scope{width:clamp(130px,18vw,205px);height:auto;object-fit:contain}
+.content{position:relative;z-index:2;max-width:720px;padding:52px 0}.eyebrow{margin:0 0 18px;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#ddd9e7;font-weight:700}
+h1{margin:0;font-size:clamp(54px,10vw,118px);line-height:.83;letter-spacing:-.075em}.gradient{display:block;color:transparent;background:linear-gradient(90deg,var(--blue),var(--violet),var(--pink),var(--gold));-webkit-background-clip:text;background-clip:text}
+.lead{max-width:620px;margin:30px 0 0;color:#d7d4df;font-size:clamp(17px,2.4vw,24px);line-height:1.55}.status{display:inline-flex;align-items:center;gap:10px;margin-top:34px;padding:12px 16px;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;font-size:13px;color:#f0edf4}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--pink);box-shadow:0 0 18px var(--pink);animation:pulse 1.8s ease-in-out infinite}@keyframes pulse{50%{opacity:.35;transform:scale(.82)}}
+.footer{padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase}.footer strong{color:#fff;font-weight:700}.accent-line{height:2px;flex:1;max-width:260px;background:linear-gradient(90deg,var(--blue),var(--violet),var(--pink),var(--gold));border-radius:999px}
+@media(max-width:640px){.shell{min-height:100svh;display:block;padding:10px}.card{width:100%;min-height:calc(100svh - 20px);border-radius:22px;padding:20px 18px;overflow:hidden}.topbar{align-items:flex-start;gap:12px}.verdant{width:132px;max-width:46vw}.scope{width:112px;max-width:38vw}.content{padding:34px 0 28px;max-width:100%}.eyebrow{font-size:10px;line-height:1.45;letter-spacing:.22em;margin-bottom:16px}h1{font-size:clamp(46px,14.5vw,66px);line-height:.9;letter-spacing:-.06em}.lead{font-size:16px;line-height:1.55;margin-top:24px}.status{margin-top:26px;font-size:12px;padding:11px 14px}.footer{margin-top:18px;padding-top:18px;align-items:center;gap:10px;font-size:10px;line-height:1.35}.footer strong,.footer span{white-space:normal}.accent-line{display:none}}@media(max-width:390px){.card{padding:18px 16px}.verdant{width:120px}.scope{width:102px}.content{padding:28px 0 22px}h1{font-size:clamp(42px,14vw,56px)}.lead{font-size:15px}.footer{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.dot{animation:none}}
+</style>
 </head>
 <body>
-  <div class="page">
-    <header class="site-header">
-      <div class="topbar">
-        <img class="brand" src="/assets/verdant-logo-branca.png" data-dark-logo="/assets/verdant-logo-branca.png" data-light-logo="/assets/verdant-logo-preta.png" alt="Verdant Curitiba">
-        <button class="theme-toggle" type="button" aria-pressed="false"><span aria-hidden="true">☼</span><span>Tema claro</span></button>
-      </div>
-      <p class="language"><span aria-hidden="true">文</span> &nbsp;PT-BR</p>
-      <div class="spectrum" aria-hidden="true"></div>
-    </header>
-    <main class="document">
-      <h1>Eventos da Verdant</h1>
-      <p class="events-intro">Programação de 22 a 25 de outubro. Escolha um evento para ver todos os detalhes.</p>
-      <section class="events-grid" aria-label="Eventos da Verdant">
-        <article class="event-card">
-          <a class="event-cover" href="/modofunk" aria-label="Saiba mais sobre MODO F*NK">
-            <img src="https://drive.google.com/thumbnail?id=1k8GOBTiRMudixs3uJrQD-bEKul5dFlb8&sz=w1200" alt="Banner MODO F*NK">
-            <span class="event-copy"><strong>MODO F*NK</strong><small>Quinta · 22 de outubro · 22h–06h</small></span>
-          </a>
-        </article>
-        <article class="event-card">
-          <a class="event-cover" href="/frenetika" aria-label="Saiba mais sobre FRENÉTIKA">
-            <img src="https://drive.google.com/thumbnail?id=12-Ic2rwxp49S91oUKItsAyp_-z8MU1UX&sz=w1200" alt="Banner FRENÉTIKA">
-            <span class="event-copy"><strong>FRENÉTIKA</strong><small>Sexta · 23 de outubro · 22h–06h</small></span>
-          </a>
-        </article>
-        <article class="event-card">
-          <a class="event-cover" href="/gostoso" aria-label="Saiba mais sobre GOSTOSO">
-            <img src="https://drive.google.com/thumbnail?id=1PKdpAqrqiProc-EXuPENF7xkrfDgNBBS&sz=w1200" alt="Banner GOSTOSO">
-            <span class="event-copy"><strong>GOSTOSO</strong><small>Sábado · 24 de outubro · 22h–07h</small></span>
-          </a>
-        </article>
-        <article class="event-card">
-          <a class="event-cover" href="/ressaka" aria-label="Saiba mais sobre RESSAKA">
-            <img src="https://drive.google.com/thumbnail?id=16kskGRUZcbgB2pZBDzV3hl5cQ772xB0G&sz=w1200" alt="Banner RESSAKA">
-            <span class="event-copy"><strong>RESSAKA</strong><small>Domingo · 25 de outubro · 19h–03h</small></span>
-          </a>
-        </article>
-      </section>
-    </main>
-    <nav class="legal" aria-label="Informações legais">
-      <a href="/politica-de-privacidade.html">Política de Privacidade</a>
-      <a href="/termos-de-uso.html">Termos de Uso</a>
-      <a href="/exclusao-de-dados.html">Exclusão de Dados</a>
-    </nav>
-    <div class="credit"><span>Desenvolvido por</span><img src="/assets/scope-connect-logo.png" alt="Scope Connect"></div>
-  </div>
-  <script src="/assets/legal-pages.js"></script>
+<main class="shell" aria-labelledby="maintenance-title">
+<section class="card">
+<header class="topbar">
+<img class="verdant" src="/assets/verdant-logo-branca.png" alt="Verdant">
+<img class="scope" src="/assets/scope-connect-colorida.webp" alt="Scope Connect">
+</header>
+<div class="content">
+<p class="eyebrow">Programação · 22–25 de outubro</p>
+<h1 id="maintenance-title">Estamos em<br><span class="gradient">manutenção.</span></h1>
+<p class="lead">Estamos atualizando a programação. Em breve, todas as informações da semana estarão disponíveis por aqui.</p>
+<div class="status"><span class="dot" aria-hidden="true"></span>Atualização em andamento</div>
+</div>
+<footer class="footer"><strong>Verdant Curitiba</strong><span class="accent-line" aria-hidden="true"></span><span>by Scope Connect</span></footer>
+</section>
+</main>
 </body>
 </html>
