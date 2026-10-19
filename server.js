@@ -68,6 +68,7 @@ const server = http.createServer((req, res) => {
   if (pathname === '/') pathname = '/index.html';
   if (pathname === '/listas' || pathname === '/listas/') pathname = '/listas/index.html';
   if (pathname === '/eventos' || pathname === '/eventos/') pathname = '/eventos/index.html';
+  if (pathname === '/scopeconnect' || pathname === '/scopeconnect/') pathname = '/scopeconnect/index.html';
   if (pathname === '/modofunk' || pathname === '/modofunk/') pathname = '/modofunk/index.html';
   if (pathname === '/frenetika' || pathname === '/frenetika/') pathname = '/frenetika/index.html';
   if (pathname === '/gostoso' || pathname === '/gostoso/') pathname = '/gostoso/index.html';
