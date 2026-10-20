@@ -1,46 +1,1022 @@
 <!doctype html>
+<!--
+  Website built on the free template by 8B: https://8b.com/templates/
+  Source: https://github.com/8bsite/event-website-template
+  MIT License (code) https://8b.com/ · Event artwork and logos: Verdant Curitiba · Fonts: Google Fonts (OFL)
+  One HTML file, no build step. Notes for people and AI agents: README.md and AGENTS.md.
+-->
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#07070b">
-<meta name="description" content="Verdant Curitiba — programação de 22 a 25 de outubro em atualização.">
-<title>Verdant CWB · Em manutenção</title>
-<link rel="icon" type="image/png" href="/assets/verdant-favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VERDANT Curitiba — Agenda de eventos, listas e informações</title>
+<meta name="description" content="Agenda oficial do Verdant Curitiba: Modo Funk, Frenétika, Gostoso, Ressaka e os próximos eventos. Rua Dr. Claudino dos Santos, 126 — São Francisco, Curitiba/PR.">
+<meta name="generator" content="8B Templates">
+<meta name="theme-color" content="#06060f">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="VERDANT Curitiba">
+<meta property="og:title" content="VERDANT Curitiba — Agenda de eventos, listas e informações">
+<meta property="og:description" content="Modo Funk, Frenétika, Gostoso, Ressaka e os próximos eventos do Verdant Curitiba. Rua Dr. Claudino dos Santos, 126 — São Francisco.">
+<meta property="og:image" content="assets/verdant/gostoso/gostoso-banner.jpg">
+<meta property="og:image:width" content="1640">
+<meta property="og:image:height" content="856">
+<meta property="og:image:alt" content="Gostoso, sábado 24 de outubro, 22h, no Verdant Curitiba">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/verdant/favicon-128.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="assets/verdant/gostoso/gostoso-banner.jpg" fetchpriority="high">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
+<style data-8b-part="tokens">
+:root {
+  --bg: #06060f;
+  --bg-2: #0c0b1d;
+  --panel: #0f0e22;
+  --line: rgba(255, 255, 255, .13);
+  --ink: #f6f3ff;
+  --muted: #bab5d6;
+  --blue: #5f8fe8;
+  --lilac: #b79cf2;
+  --pink: #f26cc0;
+  --yellow: #f8e23a;
+  --grad: linear-gradient(90deg, var(--blue), var(--lilac) 32%, var(--pink) 66%, var(--yellow));
+  --font: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --radius: 14px;
+  --radius-sm: 12px;
+  --shadow: 0 18px 50px rgba(0, 0, 0, .55);
+  --wrap: 1240px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --nav-h: 64px;
+  --glow: rgba(183, 156, 242, .28);
+  --max-width: var(--wrap);
+  --page-padding: var(--gutter);
+  --section-gap: clamp(36px, 5vw, 64px);
+  --card-radius: var(--radius);
+  --card-border: var(--line);
+  --surface: var(--panel);
+  --surface-elevated: var(--bg-2);
+  --text-primary: var(--ink);
+  --text-secondary: var(--muted);
+  --text-muted: #9a95b8;
+  --font-xs: 11px;
+  --font-sm: 13px;
+  --font-base: 15px;
+  --font-lg: clamp(18px, 2vw, 24px);
+  --font-xl: clamp(26px, 4vw, 40px);
+  --font-display: var(--font);
+}
+.footer { margin-top: clamp(40px, 6vw, 72px); padding: 24px 0 18px; border-top: 1px solid var(--line); background: linear-gradient(180deg, transparent, rgba(95, 143, 232, .06)); }
+.footer__row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 28px; }
+.footer__logo img { height: 40px; width: auto; }
+.footer__legal { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+.footer__legal a { padding: 6px 0; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); transition: color .2s; }
+.footer__legal a:hover { color: var(--ink); }
+.footer__social { display: flex; gap: 10px; }
+.footer__social a { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 50%; color: var(--ink); transition: border-color .2s, color .2s; }
+.footer__social a:hover { border-color: var(--pink); color: #ffd4f0; }
+.footer__social svg { width: 18px; height: 18px; }
+.footer__credit { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11.5px; }
+.footer__credit a { color: var(--ink); border-bottom: 1px solid var(--pink); }
+.footer__addr { margin-top: 16px; font-style: normal; font-size: 13px; color: var(--muted); }
+.footer__addr a { color: var(--ink); border-bottom: 1px solid var(--pink); }
+.footer__addr + .footer__credit { margin-top: 12px; }
+@media (max-width: 640px) { .footer__row { flex-direction: column; align-items: flex-start; } }
+</style>
+<style data-8b-part="base">
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 8px); background: var(--bg); }
+body { margin: 0; min-height: 100vh; font-family: var(--font); font-size: 15px; line-height: 1.55; color: var(--ink); background: var(--bg); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+img, video { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; cursor: pointer; }
+h1, h2, h3, p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; border-radius: 6px; }
+.wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.skip { position: fixed; left: 12px; top: -60px; z-index: 100; padding: 10px 16px; background: var(--ink); color: var(--bg); border-radius: 999px; font-weight: 700; }
+.skip:focus { top: 10px; }
+.bg-glow { position: fixed; inset: 0; z-index: -1; pointer-events: none; background:
+  radial-gradient(900px 500px at 12% -5%, rgba(95, 143, 232, .16), transparent 70%),
+  radial-gradient(800px 520px at 95% 8%, rgba(242, 108, 192, .13), transparent 70%),
+  radial-gradient(900px 600px at 50% 105%, rgba(183, 156, 242, .10), transparent 70%); }
+.eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .34em; text-transform: uppercase; }
+.pill { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 40px; padding: 0 20px; border: 2px solid transparent; border-radius: 999px; background: linear-gradient(var(--bg), var(--bg)) padding-box, var(--grad) border-box; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; transition: transform .25s, box-shadow .25s; }
+.pill:hover { transform: translateY(-1px); box-shadow: 0 0 24px rgba(242, 108, 192, .35); }
+.pill svg { width: 16px; height: 16px; flex: none; }
+.link-arrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; padding: 6px 0; border-bottom: 2px solid var(--pink); }
+.link-arrow svg { width: 15px; height: 15px; }
+section[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+</style>
+<style data-8b-part="section:navigation">
+#navigation { position: sticky; top: 0; z-index: 50; height: var(--nav-h); background: linear-gradient(180deg, rgba(6, 6, 15, .92), rgba(6, 6, 15, .78)); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); transition: transform .35s ease; }
+#navigation.is-hidden { transform: translateY(-100%); }
+#navigation:has(.menu:not([hidden])) { backdrop-filter: none; -webkit-backdrop-filter: none; }
+.nav__in { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.nav__logo { display: block; flex: none; }
+.nav__logo img { height: 40px; width: auto; }
+.nav__links { display: none; align-items: center; gap: clamp(18px, 2.6vw, 38px); }
+.nav__links a { position: relative; padding: 8px 0; font-size: 11.5px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); }
+.nav__links a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 2px; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+.nav__links a:hover::after, .nav__links a.is-current::after { transform: scaleX(1); }
+.nav__links a.is-current { color: #ffd4f0; }
+.nav__menu { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255, 255, 255, .04); }
+.nav__menu svg { width: 22px; height: 22px; }
+.menu { position: fixed; inset: 0; z-index: 80; display: flex; flex-direction: column; padding: 14px var(--gutter) 32px; background: linear-gradient(180deg, #0c0b1d, #06060f); overflow-y: auto; }
+.menu[hidden] { display: none; }
+.menu__top { display: flex; align-items: center; justify-content: space-between; height: 48px; }
+.menu__top img { height: 42px; width: auto; }
+.menu__close { width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255, 255, 255, .04); font-size: 22px; line-height: 1; }
+.menu__links { display: grid; margin-top: 18px; }
+.menu__links a { padding: 16px 2px; border-bottom: 1px solid var(--line); font-size: 15px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+@media (min-width: 981px) {
+  :root { --nav-h: 64px; }
+  .nav__logo img { height: 44px; }
+  .nav__links { display: flex; }
+  .nav__in { display: grid; grid-template-columns: 1fr auto 1fr; }
+   .nav__menu { display: none; }
+}
+</style>
+<style data-8b-part="section:hero">
+.hero { padding: 14px 0 0; }
+.hero__stage { position: relative; isolation: isolate; border-radius: 20px; max-width: 1000px; margin-inline: auto; }
+.hero__stage::before { content: ''; position: absolute; inset: 12% 6% -8%; z-index: -1; border-radius: 40px; background: var(--glow); filter: blur(60px); opacity: .8; transition: background .8s; }
+.hero__frame { position: relative; aspect-ratio: 1640 / 856; overflow: hidden; border-radius: 20px; border: 1px solid var(--line); background: var(--bg-2); box-shadow: var(--shadow); }
+.slide { position: absolute; inset: 0; margin: 0; opacity: 0; visibility: hidden; transition: opacity .8s ease, visibility .8s; }
+.slide.is-active { opacity: 1; visibility: visible; }
+.slide img { width: 100%; height: 100%; object-fit: contain; }
+.hero__cta { position: absolute; left: 18px; bottom: 18px; transform: none; background: linear-gradient(rgba(6, 6, 15, .82), rgba(6, 6, 15, .82)) padding-box, var(--grad) border-box; backdrop-filter: blur(6px); min-height: 40px; }
+.hero__cta:hover { transform: translateY(-1px); }
+.hero__dots { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 4px; }
+.hero__dots button { position: relative; width: 24px; height: 24px; padding: 0; border: 0; background: none; }
+.hero__dots button::after { content: ''; position: absolute; left: 10px; top: 4px; width: 4px; height: 16px; border-radius: 4px; background: rgba(255, 255, 255, .35); transition: background .3s, height .3s, top .3s; }
+.hero__dots button[aria-selected="true"]::after { background: var(--pink); height: 22px; top: 1px; }
+.hero__meta { display: none; }
+@media (max-width: 640px) {
+  .hero { padding-top: 12px; }
+  .hero__frame { border-radius: 14px; }
+  .hero__cta { position: static; transform: none; margin: 14px auto 0; display: flex; width: 100%; max-width: 360px; background: linear-gradient(var(--bg), var(--bg)) padding-box, var(--grad) border-box; }
+  .hero__cta:hover { transform: none; }
+  .hero__dots { position: static; transform: none; flex-direction: row; justify-content: center; margin-top: 10px; }
+  .hero__dots button::after { left: 4px; top: 10px; width: 16px; height: 4px; }
+  .hero__dots button[aria-selected="true"]::after { width: 22px; left: 1px; height: 4px; top: 10px; }
+}
+</style>
+<style data-8b-part="section:eventos">
+.block { padding: var(--section-gap) 0 0; }
+.block__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+.block__head p { margin-top: 6px; color: var(--muted); font-size: 14px; max-width: 52ch; }
+.ev { --c: var(--lilac); position: relative; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); overflow: hidden; transition: transform .3s, border-color .3s, box-shadow .3s; }
+.ev:hover, .ev:focus-within { transform: translateY(-4px); border-color: var(--c); box-shadow: 0 14px 40px -12px var(--c); }
+.ev__art { position: relative; display: block; aspect-ratio: 9 / 16; background: #000; overflow: hidden; }
+.ev__art img, .ev__art video { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+.ev__art video { position: absolute; inset: 0; }
+.ev__art.is-rotating img { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease, transform .6s; }
+.ev__art.is-rotating img.on { opacity: 1; }
+.ev__date { z-index: 2; }
+.ev:hover .ev__art img { transform: scale(1.03); }
+.ev__date { position: absolute; left: 8px; top: 8px; display: grid; place-items: center; min-width: 40px; padding: 5px 6px 4px; border: 1px solid var(--line); border-radius: 12px; background: rgba(6, 6, 15, .78); backdrop-filter: blur(6px); text-align: center; line-height: 1.05; }
+.ev__date small { font-size: 8.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.ev__date strong { font-size: 16px; font-weight: 700; }
+.ev__tag { position: absolute; left: 10px; bottom: 10px; padding: 5px 10px; border-radius: 999px; background: rgba(6, 6, 15, .82); border: 1px solid var(--c); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.ev__body { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 10px 12px 12px; }
+.ev__body h3 { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.ev__body p { margin-top: 2px; font-size: 11px; color: var(--muted); }
+.ev__go { display: grid; place-items: center; flex: none; width: 30px; height: 30px; border: 1.5px solid var(--c); border-radius: 50%; background: transparent; color: var(--ink); }
+.ev__go svg { width: 14px; height: 14px; }
+@media (max-width: 640px) {
+  .pill { min-height: 44px; }
+}
+</style>
+<style data-8b-part="section:listas">
+.listas { display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; padding: 12px 16px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255, 255, 255, .02); }
+.listas__icon { width: 30px; height: 30px; opacity: .85; }
+.listas h2 { font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+.listas p { margin-top: 2px; color: var(--muted); font-size: 13px; }
+.listas .pill { transition: border-color .25s, color .25s; align-self: center; justify-self: end; margin: 0; white-space: nowrap; min-height: 32px; padding: 0 14px; border: 1px solid var(--line); background: transparent; box-shadow: none; font-size: 10.5px; color: var(--muted); }
+.listas .pill:hover { border-color: var(--pink); color: var(--ink); box-shadow: none; transform: none; }
+@media (max-width: 640px) { .listas { grid-template-columns: auto 1fr; } .listas .pill { grid-column: 1 / -1; justify-self: start; min-height: 40px; } }
+</style>
+<style data-8b-part="section:galeria">
+#galeria, #eventos { overflow-x: clip; }
+.gx { --gx-w: clamp(150px, 15vw, 210px); --gx-gap: 14px; position: relative; -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); overflow-x: clip; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
+.gx.is-drag { cursor: grabbing; }
+.gx:focus-visible { outline: 2px solid var(--lilac); outline-offset: 4px; }
+.gx__track { display: flex; gap: var(--gx-gap); width: max-content; will-change: transform; }
+.gl { display: block; flex: 0 0 var(--gx-w); width: var(--gx-w); aspect-ratio: 9 / 16; border: 1px solid var(--line); border-radius: var(--radius-sm); overflow: hidden; background: #000; transition: border-color .3s; }
+.gl:hover, .gl:focus-visible { border-color: var(--lilac); }
+.gl img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; }
+.ex { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); padding-block: 14px; }
+.ex__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 1000px) { .ex__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .ex__grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 640px) { .gx { --gx-w: min(64vw, 260px); --gx-gap: 12px; } }
+</style>
+<style data-8b-part="section:contato">
+</style>
+<style data-8b-part="viewer">
+.viewer { width: min(1040px, calc(100vw - 24px)); max-width: none; max-height: calc(100dvh - 24px); margin: auto; padding: 0; border: 1px solid var(--line); border-radius: 22px; background: var(--bg-2); color: var(--ink); box-shadow: 0 30px 90px rgba(0, 0, 0, .7); overflow: hidden; }
+.viewer::backdrop { background: rgba(3, 3, 10, .82); backdrop-filter: blur(6px); }
+.viewer__in { display: grid; max-height: calc(100dvh - 24px); overflow-y: auto; overscroll-behavior: contain; }
+.viewer__stage { position: relative; display: grid; place-items: center; background: #000; min-height: 0; }
+.viewer__stage img, .viewer__stage video { width: auto; max-width: 100%; max-height: min(78dvh, 820px); object-fit: contain; }
+.viewer__side { display: none; flex-direction: column; gap: 14px; padding: 22px 20px 20px; }
+.viewer--event .viewer__side { display: flex; }
+.viewer__side h2 { font-size: 20px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.viewer__side p { color: var(--muted); font-size: 14px; }
+.viewer__when { color: var(--ink) !important; font-weight: 600; }
+.viewer__thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 8px; }
+.viewer__thumbs button { padding: 0; border: 2px solid transparent; border-radius: 10px; overflow: hidden; background: #000; aspect-ratio: 3 / 4; }
+.viewer__thumbs button[aria-current="true"] { border-color: var(--pink); }
+.viewer__thumbs img { width: 100%; height: 100%; object-fit: cover; }
+.viewer__close { position: absolute; right: 10px; top: 10px; z-index: 2; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; background: rgba(6, 6, 15, .8); font-size: 20px; line-height: 1; }
+.viewer__cap { padding: 10px 16px; font-size: 13px; color: var(--muted); background: var(--bg-2); }
+.viewer--event .viewer__cap { display: none; }
+@media (min-width: 861px) {
+  .viewer--event .viewer__in { grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr); }
+  .viewer--event .viewer__side { overflow-y: auto; max-height: calc(100dvh - 24px); }
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.27/dist/lenis.min.js" defer></script>
+<style>.viewer__stage [hidden] { display: none !important; }</style>
 <style>
-:root{--bg:#07070b;--text:#fff;--muted:#aaa8b8;--line:rgba(255,255,255,.13);--pink:#ff74d8;--violet:#8b7cff;--blue:#42b7ff;--gold:#ffd65a}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-body{min-height:100dvh;overflow-x:hidden;background:radial-gradient(circle at 12% 12%,rgba(66,183,255,.13),transparent 28%),radial-gradient(circle at 88% 18%,rgba(255,116,216,.14),transparent 30%),radial-gradient(circle at 65% 90%,rgba(255,214,90,.08),transparent 28%),#07070b}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:radial-gradient(rgba(255,255,255,.18) 1px,transparent 1px);background-size:46px 46px;mask-image:linear-gradient(to bottom,black,transparent 82%)}
-.shell{min-height:100dvh;display:grid;place-items:center;padding:32px 20px;position:relative}
-.card{width:min(980px,100%);min-height:min(720px,calc(100dvh - 64px));border:1px solid var(--line);border-radius:32px;background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.018));box-shadow:0 28px 110px rgba(0,0,0,.5);backdrop-filter:blur(18px);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(28px,5vw,62px)}
-.card:before{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(255,255,255,.07);border-radius:50%;right:-180px;top:-170px;box-shadow:0 0 0 54px rgba(255,255,255,.015),0 0 0 108px rgba(255,255,255,.01)}
-.topbar,.footer{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.verdant{width:clamp(150px,22vw,230px);height:auto;object-fit:contain}.scope{width:clamp(130px,18vw,205px);height:auto;object-fit:contain}
-.content{position:relative;z-index:2;max-width:720px;padding:52px 0}.eyebrow{margin:0 0 18px;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#ddd9e7;font-weight:700}
-h1{margin:0;font-size:clamp(54px,10vw,118px);line-height:.83;letter-spacing:-.075em}.gradient{display:block;color:transparent;background:linear-gradient(90deg,var(--blue),var(--violet),var(--pink),var(--gold));-webkit-background-clip:text;background-clip:text}
-.lead{max-width:620px;margin:30px 0 0;color:#d7d4df;font-size:clamp(17px,2.4vw,24px);line-height:1.55}.status{display:inline-flex;align-items:center;gap:10px;margin-top:34px;padding:12px 16px;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;font-size:13px;color:#f0edf4}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--pink);box-shadow:0 0 18px var(--pink);animation:pulse 1.8s ease-in-out infinite}@keyframes pulse{50%{opacity:.35;transform:scale(.82)}}
-.footer{padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase}.footer strong{color:#fff;font-weight:700}.accent-line{height:2px;flex:1;max-width:260px;background:linear-gradient(90deg,var(--blue),var(--violet),var(--pink),var(--gold));border-radius:999px}
-@media(max-width:640px){.shell{min-height:100svh;display:block;padding:10px}.card{width:100%;min-height:calc(100svh - 20px);border-radius:22px;padding:20px 18px;overflow:hidden}.topbar{align-items:flex-start;gap:12px}.verdant{width:132px;max-width:46vw}.scope{width:112px;max-width:38vw}.content{padding:34px 0 28px;max-width:100%}.eyebrow{font-size:10px;line-height:1.45;letter-spacing:.22em;margin-bottom:16px}h1{font-size:clamp(46px,14.5vw,66px);line-height:.9;letter-spacing:-.06em}.lead{font-size:16px;line-height:1.55;margin-top:24px}.status{margin-top:26px;font-size:12px;padding:11px 14px}.footer{margin-top:18px;padding-top:18px;align-items:center;gap:10px;font-size:10px;line-height:1.35}.footer strong,.footer span{white-space:normal}.accent-line{display:none}}@media(max-width:390px){.card{padding:18px 16px}.verdant{width:120px}.scope{width:102px}.content{padding:28px 0 22px}h1{font-size:clamp(42px,14vw,56px)}.lead{font-size:15px}.footer{font-size:9px}}
-@media(prefers-reduced-motion:reduce){.dot{animation:none}}
+.vinfo { display: grid; gap: 18px; }
+.vinfo[hidden] { display: none; }
+.vsec { display: grid; gap: 8px; }
+.vsec h3 { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: var(--ink); }
+.vsec h3::before { content: ''; width: 18px; height: 3px; border-radius: 3px; background: var(--grad); flex: none; }
+.vchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.vchip { padding: 4px 11px; border: 1px solid var(--line); border-radius: 999px; font-size: 10.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); }
+.vlist { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.vlist li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255, 255, 255, .03); font-size: 13px; color: var(--ink); }
+.vlist li strong { font-weight: 600; text-align: right; }
+.vlist a { color: var(--muted); font-size: 12px; transition: color .2s; }
+.vlist a:hover { color: var(--pink); }
+.vinfo p { font-size: 13.5px; line-height: 1.6; }
+.vinfo .vnote { padding: 8px 12px; border-left: 3px solid var(--pink); background: rgba(242, 108, 192, .08); border-radius: 0 10px 10px 0; color: var(--ink); }
+</style>
+<style>
+.ev__body { flex-direction: column; align-items: stretch; gap: 10px; flex: 1; }
+.ev__body > div { flex: 1; }
+.ev { display: flex; flex-direction: column; }
+.ev__art { flex: none; }
+.ev__more { align-self: flex-start; display: inline-block; padding: 4px 0; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: none; font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; color: var(--muted); transition: color .2s, border-color .2s; }
+.ev__more:hover, .ev__more:focus-visible { background: none; color: var(--ink); border-color: var(--c); }
+.ev__sound { position: absolute; right: 8px; top: 8px; z-index: 3; display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: rgba(6, 6, 15, .72); backdrop-filter: blur(6px); color: var(--ink); cursor: pointer; transition: border-color .2s; }
+.ev__sound:hover, .ev__sound:focus-visible { border-color: var(--c); }
+.ev__sound svg { width: 16px; height: 16px; }
+.ev__sound .on, .ev__sound[aria-pressed="true"] .off { display: none; }
+.ev__sound[aria-pressed="true"] .on { display: inline; }
+.viewer__more { align-self: flex-start; margin-top: 6px; min-height: 34px; padding: 0 14px; border: 1px solid var(--line); background: transparent; box-shadow: none; font-size: 10.5px; color: var(--muted); }
+.viewer__more:hover { border-color: var(--pink); color: var(--ink); box-shadow: none; transform: none; }
+.viewer__media { display: grid; min-width: 0; align-content: start; background: #000; }
+.viewer .viewer__thumbs { display: flex; grid-template-columns: none; gap: 8px; overflow-x: auto; padding: 10px 12px; background: var(--bg-2); }
+.viewer .viewer__thumbs { display: none; }
+.viewer__stage { touch-action: pan-y; user-select: none; }
+.viewer__stage img { -webkit-user-drag: none; }
+.viewer .viewer__thumbs button { flex: none; width: 44px; aspect-ratio: 9 / 16; border-radius: 8px; }
+.viewer--event .viewer__stage img, .viewer--event .viewer__stage video { max-height: min(64dvh, 700px); }
 </style>
 </head>
 <body>
-<main class="shell" aria-labelledby="maintenance-title">
-<section class="card">
-<header class="topbar">
-<img class="verdant" src="/assets/verdant-logo-branca.png" alt="Verdant">
-<img class="scope" src="/assets/scope-connect-colorida.webp" alt="Scope Connect">
+<a class="skip" href="#eventos">Ir para os eventos</a>
+<div class="bg-glow" aria-hidden="true"></div>
+
+<header id="navigation" data-8b-section="navigation">
+  <div class="wrap nav__in">
+    <a class="nav__logo" href="#inicio" aria-label="VERDANT Curitiba — início"><img src="assets/verdant/logo-verdant-480.png" width="480" height="262" alt="VERDANT"></a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="#inicio" data-nav="inicio">Início</a>
+      <a href="#eventos" data-nav="eventos">Eventos</a>
+      <a href="listas.html">Listas</a>
+      <a href="cardapio.html">Cardápio</a>
+      <a href="informacoes.html">Informações</a>
+      
+      <a href="contato.html">Contato</a>
+    </nav>
+    <button class="nav__menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <div class="menu" id="menu" hidden role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="menu__top">
+      <img src="assets/verdant/logo-verdant-480.png" width="480" height="262" alt="VERDANT">
+      <button class="menu__close" type="button" aria-label="Fechar menu">✕</button>
+    </div>
+    <nav class="menu__links" aria-label="Menu móvel">
+      <a href="#inicio">Início</a>
+      <a href="#eventos">Eventos</a>
+      <a href="listas.html">Listas</a>
+      <a href="cardapio.html">Cardápio</a>
+      <a href="informacoes.html">Informações</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </div>
 </header>
-<div class="content">
-<p class="eyebrow">Programação · 22–25 de outubro</p>
-<h1 id="maintenance-title">Estamos em<br><span class="gradient">manutenção.</span></h1>
-<p class="lead">Estamos atualizando a programação. Em breve, todas as informações da semana estarão disponíveis por aqui.</p>
-<div class="status"><span class="dot" aria-hidden="true"></span>Atualização em andamento</div>
-</div>
-<footer class="footer"><strong>Verdant Curitiba</strong><span class="accent-line" aria-hidden="true"></span><span>by Scope Connect</span></footer>
+
+<main>
+<section id="inicio" class="hero" data-8b-section="hero" aria-roledescription="carrossel" aria-label="Destaques da programação">
+  <div class="wrap">
+    <div class="hero__stage">
+      <div class="hero__frame" aria-live="off">
+        <figure class="slide is-active" data-glow="rgba(126, 217, 87, .34)">
+          <img src="assets/verdant/gostoso/gostoso-banner.jpg" width="1640" height="856" alt="Gostoso, sábado 24 de outubro, 22h, no Verdant Curitiba" fetchpriority="high" decoding="async">
+        </figure>
+        <figure class="slide" data-glow="rgba(63, 224, 208, .30)">
+          <img src="assets/verdant/modo-funk/modo-funk-banner.jpg" width="1640" height="856" alt="Modo Funk, quinta-feira 22 de outubro, 22h, com Rafa Blaky, Dubiong, Pabis e Wallasss" loading="lazy" decoding="async">
+        </figure>
+        <figure class="slide" data-glow="rgba(255, 138, 31, .32)">
+          <img src="assets/verdant/frenetika/frenetika-banner.jpg" width="1640" height="856" alt="Frenétika, sexta-feira 23 de outubro, 22h, no Verdant Curitiba" loading="lazy" decoding="async">
+        </figure>
+        <figure class="slide" data-glow="rgba(255, 194, 26, .32)">
+          <img src="assets/verdant/ressaka/ressaka-banner.jpg" width="1640" height="856" alt="Ressaka, domingo 25 de outubro, 19h, no Verdant Curitiba" loading="lazy" decoding="async">
+        </figure>
+        <figure class="slide" data-glow="rgba(224, 50, 43, .34)">
+          <img src="assets/verdant/halloween-circus/halloween-circus-banner.jpg?v=2" width="1280" height="670" alt="Halloween Circus, sábado 31 de outubro, 22h, com Rosane Amaral, Giulia Moretti e Paulo Pringles" loading="lazy" decoding="async">
+        </figure>
+        <figure class="slide" data-glow="rgba(240, 54, 143, .34)">
+          <img src="assets/verdant/only-xxx/only-xxx-banner.jpg" width="1600" height="835" alt="Only XXX, sábado 7 de novembro, com Cacá Werneck e Erik Vilar" loading="lazy" decoding="async">
+        </figure>
+      </div>
+      <a class="pill hero__cta" href="#eventos">
+        Ver eventos
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </a>
+      <div class="hero__dots" role="tablist" aria-label="Escolher destaque">
+        <button type="button" role="tab" aria-selected="true" aria-label="Gostoso"></button>
+        <button type="button" role="tab" aria-selected="false" aria-label="Modo Funk"></button>
+        <button type="button" role="tab" aria-selected="false" aria-label="Frenétika"></button>
+        <button type="button" role="tab" aria-selected="false" aria-label="Ressaka"></button>
+        <button type="button" role="tab" aria-selected="false" aria-label="Halloween Circus"></button>
+        <button type="button" role="tab" aria-selected="false" aria-label="Only XXX"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="eventos" class="block" data-8b-section="eventos" aria-labelledby="eventos-t">
+  <div class="wrap">
+    <div class="block__head">
+      <div>
+        <h2 id="eventos-t" class="eyebrow">Próximos eventos</h2>
+        <p>Eventos exclusivos para maiores de 18 anos.</p>
+      </div>
+      <a class="link-arrow" href="#galeria">Ver galeria
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <!-- To add an event: copy one <article class="ev"> below, then change the date, the title, the images and data-gallery. -->
+  </div>
+  <div class="ex" id="eventosStrip" data-8b-motion="rise">
+      <div class="ex__grid">
+      <article class="ev" data-fb="https://www.facebook.com/share/1a9rhxZxs8/" style="--c:#3fe0d0" data-slides="assets/verdant/modo-funk/modo-funk-stories-02.jpg|assets/verdant/modo-funk/modo-funk-stories-03.jpg|assets/verdant/modo-funk/modo-funk-stories-04.jpg|assets/verdant/modo-funk/modo-funk-stories-05.jpg" data-title="Modo Funk" data-when="🟢 QUINTA • 22.10.2026 • 22H–06H" data-info="🍹 OPEN BAR&#10;🪩 POP • FUNK&#10;&#10;Quinta-feira é dia de entrar no MODO F*NK! 💥&#10;&#10;Uma noite inteira de Pop e Funk comandando a Pista LAND.&#10;&#10;🎧 PISTA LAND • POP • FUNK&#10;Wallas • @wallasssssssssss&#10;Pabis • @gabrielpabis&#10;Rafa Blaky • @rafablaky&#10;Dubiong • @dubiongdj&#10;&#10;🔥 INFORMAÇÕES DO EVENTO&#10;🍹 Open Bar&#10;💗 Cardápio Lover • Drinks a R$ 12&#10;&#10;🎟️ VALORES DE ENTRADA&#10;22h–00h • R$ 40&#10;Após 00h • R$ 50&#10;&#10;Os valores podem sofrer alterações conforme a lotação da casa.&#10;&#10;🎂 ANIVERSARIANTE&#10;Aniversariante do dia não paga.&#10;&#10;📍 VERDANT CWB&#10;Rua Dr. Claudino dos Santos, 126 — São Francisco, Curitiba/PR&#10;&#10;🔞 Entrada somente para maiores de 18 anos.&#10;&#10;💥 MODO F*NK • QUINTA NA VERDANT&#10;Confirme sua presença no evento e marque quem vai com você." data-gallery="assets/verdant/modo-funk/modo-funk-stories-01.jpg|assets/verdant/modo-funk/modo-funk-stories-02.jpg|assets/verdant/modo-funk/modo-funk-stories-03.jpg|assets/verdant/modo-funk/modo-funk-stories-04.jpg|assets/verdant/modo-funk/modo-funk-stories-05.jpg|assets/verdant/modo-funk/modo-funk-stories-06.jpg">
+        <a class="ev__art" href="assets/verdant/modo-funk/modo-funk-stories-01.jpg" aria-label="Ver detalhes: Modo Funk, quinta-feira 22 de outubro, 22h">
+          <img src="assets/verdant/modo-funk/modo-funk-stories-01.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="Arte do Modo Funk: Rafa Blaky, Dubiong, Pabis e Wallasss — quinta-feira 22 de outubro, 22h">
+          <span class="ev__date" aria-hidden="true"><small>Qui</small><strong>22</strong><small>Out</small></span>
+        </a>
+        <div class="ev__body">
+          <div><h3>Modo Funk</h3><p>Pop · Funk</p></div>
+          <a class="ev__more" href="https://www.facebook.com/verdantcuritiba/events" target="_blank" rel="noopener">Saiba mais</a>
+        </div>
+      </article>
+      <article class="ev" data-fb="https://www.facebook.com/share/1HZJZdqEgb/" style="--c:#ff8a1f" data-slides="assets/verdant/frenetika/frenetika-sky.jpg|assets/verdant/frenetika/frenetika-land.jpg" data-title="Frenétika" data-when="🟠 SEXTA • 23.10.2026 • 22H–06H" data-info="🪩 POP • FUNK • EDM • TRIBAL • TRIBAL HOUSE&#10;&#10;Sexta-feira a Verdant entra no modo FRENÉTIKA! 💥&#10;&#10;Duas pistas, oito DJs e duas atmosferas durante a noite.&#10;&#10;🎧 PISTA LAND • POP • FUNK • EDM&#10;Fredo • @djfredoofc&#10;Diego San Fierro • @diegosanfierro&#10;Laritssa Beats • @laritssabeat&#10;Cahe Nardy • @cahenardy&#10;&#10;🎧 PISTA SKY • TRIBAL • TRIBAL HOUSE&#10;Rozzini • @dj.rozzini&#10;Liu Rosa • @liu_rosa&#10;Matt Lovi • @djmattlovi&#10;Gui Quintiliano • @guiquinti&#10;&#10;🔥 INFORMAÇÕES DO EVENTO&#10;&#10;🧊 22h–00h • Double Smirnoff Ice lata&#10;🍸 22h–00h • Double Vodkas&#10;💗 22h–00h • Menu Lover&#10;&#10;🍸 Após 00h • Double Vodka&#10;🍹 Após 00h • Double Caipirinha&#10;&#10;🎟️ VALORES DE ENTRADA&#10;22h–00h • R$ 20&#10;Após 00h • R$ 30 sem consumação ou R$ 60 com consumação&#10;&#10;Valores podem sofrer alterações conforme a lotação da casa.&#10;&#10;🎂 Aniversariante do dia não paga.&#10;&#10;📍 Rua Dr. Claudino dos Santos, 126 — São Francisco, Curitiba/PR&#10;🔞 Evento exclusivo para maiores de 18 anos.&#10;&#10;👇 Marca quem vai curtir a FRENÉTIKA com você!" data-gallery="assets/verdant/frenetika/frenetika-sky.jpg|assets/verdant/frenetika/frenetika-land.jpg">
+        <a class="ev__art" href="assets/verdant/frenetika/frenetika.jpg" aria-label="Ver detalhes: Frenétika, sexta-feira 23 de outubro, 22h">
+          <img src="assets/verdant/frenetika/frenetika.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="Arte da Frenétika: Pista Sky e Pista Land — sexta-feira 23 de outubro, 22h">
+          <span class="ev__date" aria-hidden="true"><small>Sex</small><strong>23</strong><small>Out</small></span>
+        </a>
+        <div class="ev__body">
+          <div><h3>Frenétika</h3><p>Pop · Funk · EDM · Tribal</p></div>
+          <a class="ev__more" href="https://www.facebook.com/verdantcuritiba/events" target="_blank" rel="noopener">Saiba mais</a>
+        </div>
+      </article>
+      <article class="ev" data-fb="https://www.facebook.com/share/19khsJbJg2/" style="--c:#f6d52a" data-title="Gostoso" data-when="🟡 SÁBADO • 24.10.2026 • 22H–07H" data-info="🪩 POP • FUNK • EDM • TRIBAL • TRIBAL HOUSE&#10;&#10;A festa mais quente do Rio de Janeiro chega a Curitiba! 🔥&#10;&#10;A GOSTOSO desembarca na Verdant para uma edição especial com duas pistas.&#10;&#10;🎧 PISTA LAND • POP • FUNK • EDM&#10;Zayon • @oficialdjzayon&#10;Gey Magalhães • @geymagalhaes_&#10;Hygor Pherrer • @hygorpherrer&#10;Wagner Mauricio • @wagnermauricio&#10;&#10;🎧 PISTA SKY • TRIBAL • TRIBAL HOUSE&#10;Mau Perin • @mauriciomperin&#10;Mário Beckman • @mariobeckman&#10;Lipe Lourenço • @lipe_lourenco&#10;Gabriel Trevinino • @gabrieltrevino_&#10;John Wilber • @john.wilberr&#10;&#10;🔥 INFORMAÇÕES DO EVENTO&#10;🍋 Double Caipirinha Nizya • 23h–00h&#10;🍸 Double Vodka • 22h–02h&#10;🧊 Double Smirnoff Ice Limão • 00h–02h&#10;&#10;🎟️ VALORES DE ENTRADA&#10;22h–00h • R$ 40 sem consumação&#10;22h–00h • R$ 80 com consumação&#10;&#10;Os valores podem sofrer alterações conforme a lotação da casa.&#10;&#10;🎂 ANIVERSARIANTE&#10;Aniversariante do dia não paga.&#10;&#10;📍 VERDANT CWB&#10;Rua Dr. Claudino dos Santos, 126 — São Francisco, Curitiba/PR&#10;&#10;🔞 Entrada somente para maiores de 18 anos.&#10;&#10;🍌 GOSTOSO • SÁBADO NA VERDANT&#10;Confirme sua presença no evento e marque quem vai com você." data-gallery="assets/verdant/gostoso/gostoso-banana-land.jpg|assets/verdant/gostoso/gostoso-banana-sky.jpg|assets/verdant/gostoso/gostoso-banana-lipe-lourenco.jpg|assets/verdant/gostoso/gostoso-banana-mario-beckman.jpg|assets/verdant/gostoso/gostoso-banana-gabriel-trevino.jpg|assets/verdant/gostoso/gostoso-banana-john.jpg|assets/verdant/gostoso/gostoso-banana-mau-perin.jpg|assets/verdant/gostoso/gostoso-banana-wagner.jpg|assets/verdant/gostoso/gostoso-banana-hygor.jpg|assets/verdant/gostoso/gostoso-banana-zayon.jpg|assets/verdant/gostoso/gostoso-banana-ge.jpg" data-video="assets/verdant/gostoso/gostoso.mp4">
+        <a class="ev__art" href="assets/verdant/gostoso/gostoso-banana.jpg" aria-label="Ver detalhes: Gostoso, sábado 24 de outubro, 22h">
+          <img src="assets/verdant/gostoso/gostoso-banana.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="Arte do Gostoso, apresentado pelo Verdant — sábado 24 de outubro, 22h">
+          <video data-src="assets/verdant/gostoso/gostoso.mp4" poster="assets/verdant/gostoso/gostoso-banana.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+          <span class="ev__date" aria-hidden="true"><small>Sáb</small><strong>24</strong><small>Out</small></span>
+        </a>
+        <div class="ev__body">
+          <div><h3>Gostoso</h3><p>Pop · Funk · EDM · Tribal</p></div>
+          <a class="ev__more" href="https://www.facebook.com/verdantcuritiba/events" target="_blank" rel="noopener">Saiba mais</a>
+        </div>
+      </article>
+      <article class="ev" data-fb="https://www.facebook.com/share/1FAN1eK4Bs/" style="--c:#ffc21a" data-slides="assets/verdant/ressaka/ressaka-stories-02.jpg|assets/verdant/ressaka/ressaka-stories-03.jpg|assets/verdant/ressaka/ressaka-stories-04.jpg" data-title="Ressaka" data-when="🟡 DOMINGO • 25.10.2026 • 19H–03H" data-info="🍹 OPEN BAR • 19H–21H&#10;🪩 POP • FUNK • EDM&#10;&#10;Domingo é dia de RESSAKA na Verdant! 💛&#10;&#10;Pop, Funk e EDM comandam a Pista LAND para fechar a semana.&#10;&#10;🎧 PISTA LAND • POP • FUNK • EDM&#10;Matz • @_matzdj&#10;Tejs Gui • @tejs_gui&#10;Andre Gazza • @djandregazza&#10;Yasmin Carraroh • @yasmincarraroh&#10;&#10;🔥 INFORMAÇÕES DO EVENTO&#10;🍹 Open Bar • 19h–21h&#10;🧊 Double Smirnoff Ice Limão • 21h–23h&#10;💗 Cardápio Lover • Drinks a R$ 12&#10;&#10;🎟️ VALORES DE ENTRADA&#10;19h–21h • R$ 40&#10;Após 21h • R$ 30 sem consumação ou R$ 60 com consumação&#10;&#10;Os valores podem sofrer alterações conforme a lotação da casa.&#10;&#10;🎂 ANIVERSARIANTE&#10;Aniversariante do dia não paga.&#10;&#10;📍 VERDANT CWB&#10;Rua Dr. Claudino dos Santos, 126 — São Francisco, Curitiba/PR&#10;&#10;🔞 Entrada somente para maiores de 18 anos.&#10;&#10;💛 RESSAKA • DOMINGO NA VERDANT&#10;Confirme sua presença no evento e marque quem vai com você." data-gallery="assets/verdant/ressaka/ressaka-stories-01.jpg|assets/verdant/ressaka/ressaka-stories-02.jpg|assets/verdant/ressaka/ressaka-stories-03.jpg|assets/verdant/ressaka/ressaka-stories-04.jpg|assets/verdant/ressaka/matz.jpg|assets/verdant/ressaka/yasmin.jpg|assets/verdant/ressaka/andre-gazza.jpg|assets/verdant/ressaka/tejs.jpg">
+        <a class="ev__art" href="assets/verdant/ressaka/ressaka-stories-01.jpg" aria-label="Ver detalhes: Ressaka, domingo 25 de outubro, 19h">
+          <img src="assets/verdant/ressaka/ressaka-stories-01.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="Arte da Ressaka: Matz, Yasmin Carraroh, Andre Gazza e Tejs Gui — domingo 25 de outubro, 19h">
+          <span class="ev__date" aria-hidden="true"><small>Dom</small><strong>25</strong><small>Out</small></span>
+        </a>
+        <div class="ev__body">
+          <div><h3>Ressaka</h3><p>Pop · Funk · EDM</p></div>
+          <a class="ev__more" href="https://www.facebook.com/verdantcuritiba/events" target="_blank" rel="noopener">Saiba mais</a>
+        </div>
+      </article>
+      <article class="ev" data-fb="https://www.facebook.com/share/1DUAAR7Bym/" style="--c:#e0322b" data-title="Halloween Circus" data-when="SÁBADO • 31.10.2026 • 22H" data-info="TRIBAL • POP • FUNK • EDM&#10;&#10;SAVE THE DATE&#10;&#10;Senhoras e senhores, preparem-se para o espetáculo mais sombrio do ano! 🎪&#10;&#10;No Halloween Circus, o picadeiro da Verdant se transforma em cenário para uma noite de mistério, fantasia e muita música.&#10;Prepare sua fantasia e venha fazer parte desse espetáculo! 🎃&#10;&#10;🎧 PISTA SKY • TRIBAL HOUSE&#10;Rosane Amaral • Paulo Pringles • Giulia Moretti • Anderson Zabroski • Ramohn&#10;&#10;🎧 PISTA LAND • POP &amp; FUNK&#10;Atrações em breve.&#10;&#10;Mais informações em breve.&#10;Marque seu interesse neste evento para acompanhar as novidades." data-gallery="" data-video="assets/verdant/halloween-circus/halloween-circus.mp4">
+        <a class="ev__art" href="assets/verdant/halloween-circus/halloween-circus.jpg" aria-label="Ver detalhes: Halloween Circus, sábado 31 de outubro">
+          <img src="assets/verdant/halloween-circus/halloween-circus.jpg" width="720" height="1280" loading="lazy" decoding="async" alt="Arte do Halloween Circus, com Rosane Amaral, Giulia Moretti e Paulo Pringles — sábado 31 de outubro">
+          <video data-src="assets/verdant/halloween-circus/halloween-circus.mp4" poster="assets/verdant/halloween-circus/halloween-circus.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+          <span class="ev__date" aria-hidden="true"><small>Sáb</small><strong>31</strong><small>Out</small></span>
+        </a>
+        <div class="ev__body">
+          <div><h3>Halloween Circus</h3><p>Tribal · Pop · Funk · EDM</p></div>
+          <a class="ev__more" href="https://www.facebook.com/verdantcuritiba/events" target="_blank" rel="noopener">Saiba mais</a>
+        </div>
+      </article>
+      <article class="ev" data-fb="https://www.facebook.com/share/1Kp98puSBv/" style="--c:#f0368f" data-title="Only XXX" data-when="🟣 SÁBADO • 07.11.2026" data-info="O dia já está marcado. Agora, só falta você! 🔥&#10;&#10;Cacá Werneck e Erik Vilar são as atrações confirmadas da ONLY XXX na Verdant. Uma noite para se jogar na pista e viver cada batida com a gente!&#10;&#10;🎧 ATRAÇÕES CONFIRMADAS&#10;CACÁ WERNECK • ERIK VILAR&#10;&#10;📅 SAVE THE DATE&#10;Reserve o dia 7 de novembro e chame quem vai dividir essa noite com você.&#10;&#10;👉 Marque “Vou” no evento e acompanhe por aqui as próximas novidades sobre a programação e as condições de entrada.&#10;&#10;🔞 Entrada somente para maiores de 18 anos.&#10;📍 Rua Dr. Claudino dos Santos, 126 — São Francisco, Curitiba/PR" data-gallery="assets/verdant/only-xxx/only-xxx-banner.jpg" data-video="assets/verdant/only-xxx/only-xxx.mp4">
+        <a class="ev__art" href="assets/verdant/only-xxx/only-xxx.jpg" aria-label="Ver detalhes: Only XXX, sábado 7 de novembro">
+          <img src="assets/verdant/only-xxx/only-xxx.jpg" width="900" height="1600" loading="lazy" decoding="async" alt="Arte do Only XXX com Cacá Werneck e Erik Vilar — sábado 7 de novembro">
+          <video data-src="assets/verdant/only-xxx/only-xxx.mp4" poster="assets/verdant/only-xxx/only-xxx.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+          <span class="ev__date" aria-hidden="true"><small>Sáb</small><strong>07</strong><small>Nov</small></span>
+        </a>
+        <div class="ev__body">
+          <div><h3>Only XXX</h3><p>Save the date</p></div>
+          <a class="ev__more" href="https://www.facebook.com/verdantcuritiba/events" target="_blank" rel="noopener">Saiba mais</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="listas" class="block" data-8b-section="listas" aria-labelledby="listas-t">
+  <div class="wrap">
+    <div class="listas" data-8b-motion="rise">
+      <img class="listas__icon" src="assets/verdant/favicon-128.png" width="128" height="128" alt="" loading="lazy">
+      <div>
+        <h2 id="listas-t">Listas de desconto</h2>
+        <p>Escolha o evento na agenda e confira a lista de desconto da noite.</p>
+      </div>
+      <a class="pill" href="listas.html">Ver listas
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="galeria" class="block" data-8b-section="galeria" aria-labelledby="galeria-t">
+  <div class="wrap">
+    <div class="block__head"><h2 id="galeria-t" class="eyebrow">Galeria</h2></div>
+  </div>
+  <div class="gx" id="galeriaStrip" role="region" aria-roledescription="carrossel" aria-label="Galeria de artes" tabindex="0">
+    <div class="gx__track">
+        <a class="gl" href="assets/verdant/modo-funk/modo-funk-stories-03.jpg" data-viewer data-title="Modo Funk"><img src="assets/verdant/modo-funk/modo-funk-stories-03.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="Arte do Modo Funk com Rafa Blaky, Dubiong, Pabis e Wallasss"></a>
+        <a class="gl" href="assets/verdant/gostoso/gostoso-banana-hygor.jpg" data-viewer data-title="Gostoso"><img src="assets/verdant/gostoso/gostoso-banana-hygor.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="Arte do Gostoso com Hygor Pherrer"></a>
+        <a class="gl" href="assets/verdant/frenetika/frenetika-sky.jpg" data-viewer data-title="Frenétika — Pista Sky"><img src="assets/verdant/frenetika/frenetika-sky.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="Arte da Frenétika, Pista Sky: Lui Rosa, Matt Lovi, Gui Quintiliano e Rozzini"></a>
+        <a class="gl" href="assets/verdant/ressaka/matz.jpg" data-viewer data-title="Ressaka — Matz"><img src="assets/verdant/ressaka/matz.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="Arte da Ressaka com Matz"></a>
+        <a class="gl" href="assets/verdant/ressaka/ressaka-stories-02.jpg" data-viewer data-title="Ressaka"><img src="assets/verdant/ressaka/ressaka-stories-02.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="Arte da Ressaka para o feed"></a>
+        <a class="gl" href="assets/verdant/gostoso/gostoso-banana-sky.jpg" data-viewer data-title="Gostoso — Sky"><img src="assets/verdant/gostoso/gostoso-banana-sky.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="Arte do Gostoso, pista Sky"></a>
+        <a class="gl" href="assets/verdant/modo-funk/modo-funk-stories-05.jpg" data-viewer data-title="Modo Funk"><img src="assets/verdant/modo-funk/modo-funk-stories-05.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="Arte do Modo Funk para o feed"></a>
+        <a class="gl" href="assets/verdant/aprovados-20261024-gostoso/gostoso-banana-save.jpg" data-viewer data-title="Gostoso"><img src="assets/verdant/aprovados-20261024-gostoso/gostoso-banana-save.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="Arte save the date do Gostoso"></a>
+        <a class="gl" href="assets/verdant/ressaka/yasmin.jpg" data-viewer data-title="Ressaka — Yasmin Carraroh"><img src="assets/verdant/ressaka/yasmin.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="Arte da Ressaka com Yasmin Carraroh"></a>
+        <a class="gl" href="assets/verdant/frenetika/frenetika-land.jpg" data-viewer data-title="Frenétika — Pista Land"><img src="assets/verdant/frenetika/frenetika-land.jpg" width="1080" height="1920" loading="lazy" decoding="async" alt="Arte da Frenétika, Pista Land: Cahe Nardy, Laritssa Beats, Diego San Fierro e Fredo"></a>
+    </div>
+  </div>
 </section>
 </main>
+
+<footer id="rodape" class="footer" data-8b-section="contato">
+  <div class="wrap">
+    <div class="footer__row">
+      <a class="footer__logo" href="#inicio" aria-label="VERDANT Curitiba"><img src="assets/verdant/logo-verdant-480.png" width="480" height="262" alt="VERDANT Curitiba" loading="lazy"></a>
+      <nav class="footer__legal" aria-label="Informações legais">
+        <a href="privacidade.html">Privacidade</a>
+        <a href="termos-de-uso.html">Termos de uso</a>
+        <a href="exclusao-de-dados.html">Exclusão de dados</a>
+      </nav>
+      <div class="footer__social">
+        <a href="https://www.instagram.com/verdantcwb" target="_blank" rel="noopener" aria-label="Instagram da Verdant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></a>
+        <a href="https://www.facebook.com/verdantcuritiba" target="_blank" rel="noopener" aria-label="Facebook da Verdant"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5H16l.5-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.3 0-3.9 1.4-3.9 4v2.2H8v3h2.5V21z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer__credit">
+      <span>© 2026 NBF</span>
+      <span>desenvolvido por <a href="https://www.instagram.com/scope.deal/" target="_blank" rel="noopener">@scope.deal</a></span>
+    </div>
+  </div>
+</footer>
+
+<dialog class="viewer" id="viewer" aria-label="Detalhes">
+  <div class="viewer__in" data-lenis-prevent>
+    <div class="viewer__media">
+    <div class="viewer__stage">
+      <button class="viewer__close" type="button" aria-label="Fechar">✕</button>
+      <img id="viewerImg" alt="">
+      <video id="viewerVideo" controls playsinline preload="none" hidden></video>
+    </div>
+    <div class="viewer__thumbs" id="viewerThumbs"></div>
+    </div>
+    <p class="viewer__cap" id="viewerCap"></p>
+    <div class="viewer__side">
+      <h2 id="viewerTitle"></h2>
+      <p class="viewer__when" id="viewerWhen"></p>
+      <div class="vinfo" id="viewerInfo"></div>
+<a class="pill viewer__more" id="viewerMore" href="#" target="_blank" rel="noopener" hidden>Saiba mais</a>
+    </div>
+  </div>
+</dialog>
+
+<script data-8b-part="motion-queue">
+(() => {
+  'use strict';
+  const fonts = document.fonts ? document.fonts.ready : Promise.resolve();
+  const parsed = document.readyState === 'loading' ? new Promise(resolve => document.addEventListener('DOMContentLoaded', resolve, { once: true })) : Promise.resolve();
+  const ready = () => Promise.all([fonts, parsed]).then(() => firsts);
+  const nextTask = () => window.scheduler?.yield?.() ?? new Promise(resolve => setTimeout(resolve));
+  const refresh = () => {
+    if (typeof window.refreshScroll === 'function') return window.refreshScroll();
+    window.ScrollTrigger?.sort(); window.ScrollTrigger?.refresh();
+  };
+  const run = (setup, name) => {
+    for (const trigger of window.ScrollTrigger?.getAll() || []) if (!trigger.end && window.ScrollTrigger.getAll().includes(trigger)) trigger.refresh(0, 1);
+    const context = window.gsap.context(() => {});
+    const log = new MutationObserver(() => {});
+    log.observe(document.documentElement, { attributes: true, attributeOldValue: true, subtree: true });
+    let failure = null, records;
+    try { context.add(() => { try { setup(); } catch (error) { failure = error; } }); }
+    finally { records = log.takeRecords(); log.disconnect(); }
+    if (!failure) return true;
+    try { context.revert(); } catch (error) { console.error(name, 'revert failed', error); }
+    for (const { target, attributeName, oldValue } of records.reverse()) {
+      const now = target.getAttribute(attributeName);
+      if (oldValue == null) { if (now != null) target.removeAttribute(attributeName); }
+      else if (now !== oldValue) target.setAttribute(attributeName, oldValue);
+    }
+    console.error(name, failure);
+    return false;
+  };
+  let firsts = Promise.resolve(), tail = null, pending = 0, lazy = null, building = 0, firstCount = 0;
+  window.motionReady = ready();
+  parsed.then(() => { if (firstCount && !tail) firsts.then(refresh); });
+  window.queueMotion = (setup, { first = false, near, id } = {}) => {
+    if (!window.gsap || typeof setup !== 'function') return;
+    const name = id || document.currentScript?.getAttribute('data-8b-part') || 'motion';
+    if (near instanceof Element && window.IntersectionObserver) {
+      const watch = new IntersectionObserver(entries => {
+        if (!entries.some(entry => entry.isIntersecting)) return;
+        watch.disconnect();
+        building++;
+        lazy = (lazy || ready()).then(nextTask).then(() => run(setup, name)).finally(() => { if (!--building) refresh(); });
+      }, { rootMargin: '100% 0px' });
+      watch.observe(near);
+      return;
+    }
+    if (first) { firstCount++; firsts = firsts.then(() => fonts).then(() => { if (!run(setup, name)) refresh(); }); }
+    else {
+      pending++;
+      tail = (tail || ready()).then(nextTask).then(() => run(setup, name))
+        .finally(() => { if (!--pending) refresh(); });
+    }
+    window.motionReady = Promise.all([firsts, tail]);
+  };
+})();
+</script>
+<script data-8b-part="page-init">
+window.addEventListener('DOMContentLoaded', () => {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+  window.navHeight = () => {
+    const nav = document.querySelector('[data-8b-section="navigation"]');
+    return nav ? nav.getBoundingClientRect().height : 0;
+  };
+  window.refreshScroll = () => {
+    if (window.lenis) window.lenis.options.anchors = { offset: -navHeight() };
+    ScrollTrigger.sort();
+    ScrollTrigger.refresh();
+  };
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    if (!window.Lenis) return;
+    const lenis = window.lenis = new Lenis({ lerp: .11, anchors: { offset: -navHeight() } });
+    const tick = time => lenis.raf(time * 1000);
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(tick);
+    gsap.ticker.lagSmoothing(0);
+    return () => { gsap.ticker.remove(tick); gsap.ticker.lagSmoothing(500, 33); lenis.destroy(); window.lenis = null; };
+  });
+  window.dispatchEvent(new Event('verdant:motion'));
+});
+</script>
+<script data-8b-part="motion">
+window.addEventListener('verdant:motion', () => {
+  const effects = {
+    rise(element, vars = {}) {
+      const items = element.children.length ? [...element.children] : [element];
+      return gsap.timeline(vars).from(items, { y: 30, opacity: 0, duration: .8, ease: 'power3.out', stagger: .09 }, 0);
+    }
+  };
+  document.querySelectorAll('[data-8b-section]').forEach(section => {
+    const elements = [...section.querySelectorAll('[data-8b-motion~="rise"]')];
+    if (!elements.length) return;
+    const id = `effect:rise:${section.id}`;
+    queueMotion(() => gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+      elements.forEach((element, index) => {
+        const animation = effects.rise(element, { paused: true });
+        ScrollTrigger.create({ id: `${id}:${index}`, trigger: element, start: 'top 90%', once: true, animation, toggleActions: 'play none none none' });
+      });
+    }), { first: section.getBoundingClientRect().top < innerHeight, id });
+  });
+});
+</script>
+<script data-8b-part="section-script:navigation">
+(() => {
+  const nav = document.getElementById('navigation');
+  const menu = nav.querySelector('.menu');
+  const openButton = nav.querySelector('.nav__menu');
+  const closeButton = menu.querySelector('.menu__close');
+  let lastY = scrollY, run = 0, hidden = false;
+  addEventListener('scroll', () => {
+    const y = scrollY, delta = y - lastY;
+    lastY = y;
+    if (!delta) return;
+    if (Math.sign(delta) !== Math.sign(run)) run = 0;
+    run += delta;
+    let next = hidden;
+    if (y < 80) next = false;
+    else if (run > 30) next = true;
+    else if (run < -60) next = false;
+    if (next !== hidden) { hidden = next; nav.classList.toggle('is-hidden', hidden); }
+  }, { passive: true });
+  nav.addEventListener('focusin', () => { hidden = false; nav.classList.remove('is-hidden'); });
+  const setOpen = open => {
+    menu.hidden = !open;
+    openButton.setAttribute('aria-expanded', String(open));
+    if (open) { hidden = false; nav.classList.remove('is-hidden'); window.lenis?.stop(); closeButton.focus(); }
+    else { window.lenis?.start(); openButton.focus(); }
+  };
+  openButton.addEventListener('click', () => setOpen(true));
+  closeButton.addEventListener('click', () => setOpen(false));
+  menu.addEventListener('keydown', event => { if (event.key === 'Escape') setOpen(false); });
+  menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { menu.hidden = true; openButton.setAttribute('aria-expanded', 'false'); window.lenis?.start(); }));
+  const links = [...nav.querySelectorAll('.nav__links a')];
+  const map = new Map(links.map(link => [link.dataset.nav, link]));
+  const targets = ['inicio', 'eventos', 'galeria'].map(id => document.getElementById(id)).filter(Boolean);
+  const mark = () => {
+    const line = innerHeight * .4;
+    let current = targets[0];
+    for (const section of targets) if (section.getBoundingClientRect().top <= line) current = section;
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) current = targets[targets.length - 1];
+    links.forEach(link => link.classList.toggle('is-current', link === map.get(current.id)));
+  };
+  addEventListener('scroll', mark, { passive: true });
+  addEventListener('resize', mark);
+  mark();
+})();
+</script>
+<script data-8b-part="section-script:hero">
+(() => {
+  const stage = document.querySelector('.hero__stage');
+  const slides = [...stage.querySelectorAll('.slide')];
+  const dots = [...stage.querySelectorAll('.hero__dots button')];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  let index = 0, timer = null;
+  const show = next => {
+    index = (next + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
+    dots.forEach((dot, i) => dot.setAttribute('aria-selected', String(i === index)));
+    document.documentElement.style.setProperty('--glow', slides[index].dataset.glow);
+  };
+  const stop = () => { clearInterval(timer); timer = null; };
+  const start = () => { if (reduce.matches || timer) return; timer = setInterval(() => show(index + 1), 6000); };
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { show(i); stop(); }));
+  stage.addEventListener('mouseenter', stop);
+  stage.addEventListener('mouseleave', start);
+  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+  show(0);
+  start();
+})();
+</script>
+<script data-8b-part="section-script:strip">
+(() => {
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  const strip = (view, opts = {}) => {
+    if (!view) return;
+    const track = view.querySelector('.gx__track');
+    const originals = [...track.children];
+    const SPEED = opts.speed || 26;
+    let clones = [], setW = 0, pos = 0, pending = 0, speed = 0, hold = 0, running = false, onscreen = true, last = 0;
+    let drag = null, moved = false, hover = false;
+    const gap = () => parseFloat(getComputedStyle(track).columnGap) || 0;
+    const measure = () => {
+      if (clones.length) setW = clones[0].offsetLeft - originals[0].offsetLeft;
+      else { const l = originals[originals.length - 1]; setW = l.offsetLeft + l.offsetWidth + gap() - originals[0].offsetLeft; }
+    };
+    const build = () => {
+      clones.forEach(el => el.remove());
+      clones = [];
+      measure();
+      if (!setW) return;
+      const copies = Math.ceil(Math.max(innerWidth, screen.width, 1280) / setW);
+      for (let n = 0; n < copies; n++) originals.forEach(item => {
+        const copy = item.cloneNode(true);
+        copy.setAttribute('aria-hidden', 'true');
+        copy.querySelectorAll('a, button').forEach(el => { el.tabIndex = -1; });
+        if (copy.matches('a, button')) copy.tabIndex = -1;
+        if (opts.delegate) {
+          copy.removeAttribute('data-viewer');
+          copy.addEventListener('click', event => { event.preventDefault(); item.click(); });
+        }
+        track.append(copy);
+        clones.push(copy);
+      });
+      measure(); draw();
+    };
+    const draw = () => {
+      if (setW) pos = ((pos % setW) + setW) % setW;
+      track.style.transform = 'translate3d(' + (-pos).toFixed(2) + 'px,0,0)';
+    };
+    const target = () => (still.matches || drag || hover || document.hidden || !onscreen || performance.now() < hold ? 0 : SPEED);
+    const frame = now => {
+      const dt = Math.min(.05, (now - last) / 1000 || 0);
+      last = now;
+      speed += (target() - speed) * Math.min(1, dt * 4);
+      const glide = pending * Math.min(1, dt * 9);
+      pending -= glide;
+      if (!drag) pos += speed * dt + glide;
+      draw();
+      if (Math.abs(speed) > .05 || Math.abs(pending) > .3 || target() || drag) requestAnimationFrame(frame); else running = false;
+    };
+    const wake = () => { if (!running && setW) { running = true; last = performance.now(); requestAnimationFrame(frame); } };
+    const pause = ms => { hold = performance.now() + ms; };
+
+    view.addEventListener('pointerdown', event => {
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
+      drag = { x: event.clientX, y: event.clientY, id: event.pointerId, p: pos, v: 0, t: event.timeStamp, lx: event.clientX };
+      moved = false; pending = 0;
+    });
+    view.addEventListener('pointermove', event => {
+      if (!drag || event.pointerId !== drag.id) return;
+      const dx = event.clientX - drag.x;
+      if (!moved && Math.abs(dx) > 6 && Math.abs(dx) > Math.abs(event.clientY - drag.y)) {
+        moved = true; view.classList.add('is-drag');
+        try { view.setPointerCapture(event.pointerId); } catch (e) {}
+      }
+      if (!moved) return;
+      const dtm = Math.max(1, event.timeStamp - drag.t);
+      drag.v = .8 * drag.v + .2 * ((drag.lx - event.clientX) / dtm);
+      drag.lx = event.clientX; drag.t = event.timeStamp;
+      pos = drag.p - dx; draw(); wake();
+    });
+    const release = event => {
+      if (!drag || (event && event.pointerId !== drag.id)) return;
+      if (moved) { pending = drag.v * 260; pause(2200); }
+      drag = null; view.classList.remove('is-drag'); wake();
+    };
+    view.addEventListener('pointerup', release);
+    view.addEventListener('pointercancel', release);
+    view.addEventListener('click', event => { if (moved) { event.preventDefault(); event.stopPropagation(); moved = false; } }, true);
+    view.addEventListener('dragstart', event => event.preventDefault());
+    view.addEventListener('mouseenter', event => { if (event.buttons === 0 && matchMedia('(hover: hover)').matches) { hover = true; wake(); } });
+    view.addEventListener('mouseleave', () => { hover = false; pause(600); wake(); });
+    view.addEventListener('keydown', event => {
+      if (event.target !== view) return;
+      const step = originals[0].offsetWidth + gap();
+      if (event.key === 'ArrowRight') pending += step;
+      else if (event.key === 'ArrowLeft') pending -= step;
+      else return;
+      event.preventDefault(); pause(3500); wake();
+    });
+    view.addEventListener('focusin', event => {
+      pause(3500);
+      let item = event.target;
+      while (item && item.parentElement !== track) item = item.parentElement;
+      if (!item) return;
+      const r = item.getBoundingClientRect(), v = view.getBoundingClientRect();
+      if (r.left < v.left + 8) pending += r.left - v.left - 24;
+      else if (r.right > v.right - 8) pending += r.right - v.right + 24;
+      wake();
+    });
+    new IntersectionObserver(entries => { onscreen = entries[0].isIntersecting; if (onscreen) wake(); }).observe(view);
+    document.addEventListener('visibilitychange', wake);
+    still.addEventListener?.('change', wake);
+    let width = view.clientWidth;
+    new ResizeObserver(() => {
+      if (view.clientWidth === width) return;
+      width = view.clientWidth;
+      if (opts.delegate) build(); else { measure(); draw(); }
+      wake();
+    }).observe(view);
+    build(); wake();
+  };
+  window.addEventListener('DOMContentLoaded', () => {});
+  window.verdantStrip = strip;
+})();
+</script>
+<script data-8b-part="section-script:viewer">
+(() => {
+  const viewer = document.getElementById('viewer');
+  const img = document.getElementById('viewerImg');
+  const video = document.getElementById('viewerVideo');
+  const cap = document.getElementById('viewerCap');
+  const title = document.getElementById('viewerTitle');
+  const when = document.getElementById('viewerWhen');
+  const info = document.getElementById('viewerInfo');
+  const more = document.getElementById('viewerMore');
+  const thumbs = document.getElementById('viewerThumbs');
+  let opener = null, timer = 0, auto = false, nav = null;
+  const stage = viewer.querySelector('.viewer__stage');
+  let sx = null;
+  img.draggable = false;
+  stage.addEventListener('pointerdown', e => { sx = e.clientX; });
+  stage.addEventListener('pointerup', e => {
+    if (sx !== null && nav && Math.abs(e.clientX - sx) > 40) nav(e.clientX < sx ? 1 : -1);
+    sx = null;
+  });
+  stage.addEventListener('pointercancel', () => { sx = null; });
+  viewer.addEventListener('keydown', e => {
+    if (nav && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) { e.preventDefault(); nav(e.key === 'ArrowRight' ? 1 : -1); }
+  });
+  const showImage = (src, alt) => { video.pause(); video.hidden = true; img.hidden = false; img.src = src; img.alt = alt; };
+  const showVideo = (src, poster, label) => {
+    img.hidden = true; video.hidden = false;
+    video.poster = poster || '';
+    if (video.getAttribute('src') !== src) video.src = src;
+    video.setAttribute('aria-label', label);
+    video.muted = false;
+    const played = video.play();
+    if (played) played.catch(() => { video.muted = true; video.play().catch(() => {}); });
+  };
+  const EMOJI = /[\p{Extended_Pictographic}\uFE0F\u200D]/gu;
+  const clean = t => t.replace(EMOJI, '').replace(/[ \t]+/g, ' ').trim();
+  const isCaps = t => /\p{Lu}/u.test(t) && !/\p{Ll}/u.test(t) && !t.includes('@');
+  const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; };
+  const renderInfo = (box, raw) => {
+    box.replaceChildren();
+    if (!raw) return;
+    const blocks = raw.split(/\n\s*\n/).map(b => b.split('\n').map(clean).filter(Boolean)).filter(b => b.length);
+    let sec = null, first = true;
+    const section = title => { sec = el('section', 'vsec'); sec.append(el('h3', '', title)); box.append(sec); return sec; };
+    blocks.forEach(lines => {
+      const head = lines[0];
+      const isHead = isCaps(head) && (lines.length > 1 || /INFORMA|VALORES/.test(head)) && !(first && lines.every(isCaps));
+      if (first && lines.every(isCaps)) {
+        const chips = el('div', 'vchips');
+        lines.forEach(l => l.split(' • ').forEach(c => chips.append(el('span', 'vchip', c))));
+        box.append(chips); return;
+      }
+      first = false;
+      if (!isHead && isCaps(head) && lines.length === 1) {
+        const chips = el('div', 'vchips');
+        head.split(' • ').forEach(c => chips.append(el('span', 'vchip', c)));
+        (sec || box).append(chips); return;
+      }
+      let body = lines;
+      if (isHead) { section(head); body = lines.slice(1); }
+      const target = sec || box;
+      const title = sec ? sec.firstChild.textContent : '';
+      const list = el('ul', 'vlist');
+      body.forEach(l => {
+        const handle = l.match(/^(.*?)\s*•\s*@([\w.]+)$/);
+        if (handle) {
+          const li = el('li'); li.append(el('span', '', handle[1]));
+          const a = el('a', '', '@' + handle[2]);
+          a.href = 'https://www.instagram.com/' + handle[2] + '/'; a.target = '_blank'; a.rel = 'noopener';
+          li.append(a); list.append(li);
+        } else if (/^(PISTA|ATRA)/.test(title) && l.includes(' • ')) {
+          l.split(' • ').forEach(n => list.append(el('li', '', n)));
+        } else if (/^(PISTA|ATRA)/.test(title) && isCaps(l)) {
+          list.append(el('li', '', l));
+        } else if (/^(VALORES|INFORMA)/.test(title) && l.includes(' • ')) {
+          const [k, ...v] = l.split(' • ');
+          const li = el('li'); li.append(el('span', '', k), el('strong', '', v.join(' • '))); list.append(li);
+        } else if (/^(INFORMA)/.test(title) && !/\.$/.test(l)) {
+          list.append(el('li', '', l));
+        } else {
+          if (list.childNodes.length) { target.append(list.cloneNode(true)); list.replaceChildren(); }
+          target.append(el('p', /18 anos/.test(l) ? 'vnote' : '', l));
+        }
+      });
+      if (list.childNodes.length) target.append(list);
+    });
+  };
+  const open = (trigger, config) => {
+    opener = trigger;
+    viewer.classList.toggle('viewer--event', !!config.event);
+    thumbs.replaceChildren();
+    cap.textContent = config.title;
+    title.textContent = config.title;
+    when.textContent = (config.when || '').replace(EMOJI, '').replace(/\s+/g, ' ').trim();
+    renderInfo(info, config.info);
+    more.hidden = !config.fb; if (config.fb) more.href = config.fb;
+    info.hidden = !info.childNodes.length;
+    const items = [];
+    if (config.video) items.push({ video: config.video, poster: config.main });
+    [config.main, ...(config.gallery || [])].forEach(src => { if (src && !items.some(item => item.src === src)) items.push({ src }); });
+    clearTimeout(timer); video.onended = null; auto = !!config.event;
+    document.dispatchEvent(new Event('verdant-mute'));
+    let at = 0;
+    const show = (item, i) => item.video ? showVideo(item.video, item.poster, config.title) : showImage(item.src, i === 0 && !config.event ? (config.alt || config.title) : `${config.title}: arte ${i + 1}`);
+    const mark = i => thumbs.querySelectorAll('button').forEach((b, k) => b.setAttribute('aria-current', String(k === i)));
+    const schedule = () => {
+      clearTimeout(timer);
+      if (!auto || items.length < 2) return;
+      if (items[at].video) video.onended = () => { if (auto) go((at + 1) % items.length); };
+      else { video.onended = null; timer = setTimeout(() => go((at + 1) % items.length), 4000); }
+    };
+    const go = i => { at = i; show(items[i], i); mark(i); schedule(); };
+    show(items[0], 0);
+    nav = items.length > 1 ? d => go((at + d + items.length) % items.length) : null;
+    if (nav) schedule();
+    window.lenis?.stop();
+    viewer.showModal();
+  };
+  document.querySelectorAll('.ev').forEach(card => {
+    const link = card.querySelector('.ev__art');
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      open(link, {
+        event: true,
+        title: card.dataset.title,
+        when: card.dataset.when,
+        info: card.dataset.info,
+        main: link.querySelector('img').getAttribute('src'),
+        gallery: (card.dataset.gallery || '').split('|').filter(Boolean),
+        video: card.dataset.video,
+        fb: card.dataset.fb
+      });
+    });
+  });
+  document.querySelectorAll('[data-viewer]').forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      open(link, { title: link.dataset.title, main: link.getAttribute('href'), alt: link.querySelector('img').alt });
+    });
+  });
+  viewer.querySelector('.viewer__close').addEventListener('click', () => viewer.close());
+  viewer.addEventListener('click', event => { if (event.target === viewer) viewer.close(); });
+  viewer.addEventListener('close', () => {
+    clearTimeout(timer); auto = false; video.onended = null;
+    video.pause(); video.removeAttribute('src'); video.load();
+    window.lenis?.start();
+    opener?.focus({ preventScroll: true });
+  });
+})();
+</script>
+<script data-8b-part="section-script:galeria">
+verdantStrip(document.getElementById('galeriaStrip'), { delegate: true });
+</script>
+<script data-8b-part="section-script:cards">
+(() => {
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const seen = new Map();
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(entries => entries.forEach(entry => seen.get(entry.target)?.(entry.isIntersecting)), { threshold: .25 }) : null;
+  document.querySelectorAll('.ev').forEach((card, n) => {
+    const art = card.querySelector('.ev__art');
+    const first = art.querySelector('img');
+    const list = (card.dataset.slides || '').split('|').filter(Boolean);
+    if (list.length && !still) {
+      art.classList.add('is-rotating');
+      first.classList.add('on');
+      const slides = [first];
+      list.forEach(src => {
+        const slide = new Image();
+        slide.src = src; slide.alt = ''; slide.width = 1080; slide.height = 1920;
+        slide.loading = 'lazy'; slide.decoding = 'async'; slide.setAttribute('aria-hidden', 'true');
+        art.insertBefore(slide, art.querySelector('.ev__date'));
+        slides.push(slide);
+      });
+      let at = 0, visible = true, timer = 0;
+      const step = () => {
+        if (!visible || document.hidden) return;
+        slides[at].classList.remove('on');
+        at = (at + 1) % slides.length;
+        slides[at].classList.add('on');
+      };
+      const start = () => { if (!timer) timer = setInterval(step, 3400); };
+      setTimeout(start, n * 450);
+      io?.observe(card);
+      seen.set(card, on => { visible = on; });
+    }
+    const clip = art.querySelector('video[data-src]');
+    if (clip && !still) {
+      let loaded = false;
+      const play = on => {
+        if (on) {
+          if (!loaded) { clip.src = clip.dataset.src; loaded = true; }
+          clip.play().catch(() => {});
+        } else clip.pause();
+      };
+      if (io) { io.observe(clip); seen.set(clip, play); } else play(true);
+      const sound = document.createElement('button');
+      sound.type = 'button'; sound.className = 'ev__sound';
+      sound.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path class="off" d="m16 9 5 6m0-6-5 6"/><path class="on" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+      const label = on => { sound.setAttribute('aria-pressed', String(on)); sound.setAttribute('aria-label', (on ? 'Desativar' : 'Ativar') + ' o som do vídeo de ' + card.dataset.title); };
+      label(false);
+      sound.addEventListener('click', event => {
+        event.stopPropagation();
+        const turnOn = clip.muted;
+        document.dispatchEvent(new Event('verdant-mute'));
+        if (turnOn) { clip.muted = false; label(true); clip.play().catch(() => { clip.muted = true; label(false); }); }
+      });
+      document.addEventListener('verdant-mute', () => { clip.muted = true; label(false); });
+      card.append(sound);
+    } else if (clip) clip.remove();
+  });
+})();
+</script>
 </body>
 </html>

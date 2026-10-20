@@ -18,6 +18,12 @@ const MIME_TYPES = Object.freeze({
   '.png': 'image/png',
   '.svg': 'image/svg+xml',
   '.webp': 'image/webp',
+  '.mp4': 'video/mp4',
+  '.woff2': 'font/woff2',
+  '.woff': 'font/woff',
+  '.gif': 'image/gif',
+  '.txt': 'text/plain; charset=utf-8',
+  '.xml': 'application/xml; charset=utf-8',
 });
 const SHORT_LINKS = Object.freeze({
   '/lovers': 'https://connect.verdantcwb.com/lista/lover',
@@ -54,6 +60,14 @@ const server = http.createServer((req, res) => {
     return sendText(res, 400, 'Requisição inválida', headOnly);
   }
 
+  const OLD_PAGES = { '/politica-de-privacidade.html': '/privacidade.html', '/eventos': '/#eventos', '/modofunk': '/#eventos', '/frenetika': '/#eventos', '/gostoso': '/#eventos', '/ressaka': '/#eventos' };
+  const oldTarget = OLD_PAGES[pathname.replace(/\/+$/, '')];
+  if (oldTarget) {
+    res.writeHead(301, { Location: oldTarget, 'Cache-Control': 'no-cache' });
+    return res.end();
+  }
+  if (pathname === '/listas' || pathname === '/listas/') pathname = '/listas.html';
+
   const shortLinkPath = pathname.replace(/\/+$/, '') || '/';
   const shortLinkTarget = SHORT_LINKS[shortLinkPath];
   if (shortLinkTarget) {
@@ -70,13 +84,7 @@ const server = http.createServer((req, res) => {
   const isPrivatePreview = pathname === '/' && requestUrl.searchParams.get('preview') === 'scopeconnect';
   if (isPrivatePreview) pathname = '/preview/index.html';
   else if (pathname === '/') pathname = '/index.html';
-  if (pathname === '/listas' || pathname === '/listas/') pathname = '/listas/index.html';
-  if (pathname === '/eventos' || pathname === '/eventos/') pathname = '/eventos/index.html';
   if (pathname === '/scopeconnect' || pathname === '/scopeconnect/') pathname = '/scopeconnect/index.html';
-  if (pathname === '/modofunk' || pathname === '/modofunk/') pathname = '/modofunk/index.html';
-  if (pathname === '/frenetika' || pathname === '/frenetika/') pathname = '/frenetika/index.html';
-  if (pathname === '/gostoso' || pathname === '/gostoso/') pathname = '/gostoso/index.html';
-  if (pathname === '/ressaka' || pathname === '/ressaka/') pathname = '/ressaka/index.html';
   if (pathname.endsWith('/')) pathname += 'index.html';
 
   const filePath = path.resolve(PUBLIC_ROOT, `.${pathname}`);
@@ -98,11 +106,31 @@ const server = http.createServer((req, res) => {
       'X-Frame-Options': 'SAMEORIGIN',
     };
     if (isPrivatePreview) headers['X-Robots-Tag'] = 'noindex, nofollow';
-    res.writeHead(200, headers);
+    headers['Accept-Ranges'] = 'bytes';
+    const range = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range || '');
+    let start = 0;
+    let end = stat.size - 1;
+    let status = 200;
+    if (range && (range[1] || range[2])) {
+      if (range[1]) {
+        start = Number(range[1]);
+        if (range[2]) end = Math.min(Number(range[2]), end);
+      } else {
+        start = Math.max(stat.size - Number(range[2]), 0);
+      }
+      if (start > end || start >= stat.size) {
+        res.writeHead(416, { 'Content-Range': 'bytes */' + stat.size });
+        return res.end();
+      }
+      status = 206;
+      headers['Content-Range'] = 'bytes ' + start + '-' + end + '/' + stat.size;
+      headers['Content-Length'] = end - start + 1;
+    }
+    res.writeHead(status, headers);
 
     if (headOnly) return res.end();
 
-    const stream = fs.createReadStream(filePath);
+    const stream = fs.createReadStream(filePath, { start, end });
     stream.on('error', () => {
       if (!res.headersSent) sendText(res, 500, 'Erro interno do servidor');
       else res.destroy();
