@@ -126,5 +126,5 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-even
 .card .pill { border: 1px solid var(--line); background: transparent; color: var(--ink); }
 .card .pill:hover { border-color: var(--pink); box-shadow: none; transform: none; }
 
-.nav__cta { margin-left: auto; margin-right: -10px; display: inline-flex; align-items: center; min-height: 40px; padding: 0 12px; border: 1px solid transparent; border-radius: 999px; background: linear-gradient(var(--bg), var(--bg)) padding-box, var(--grad) border-box; font-size: 9.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+.nav__cta { margin-left: auto; margin-right: -10px; display: inline-flex; align-items: center; min-height: 34px; padding: 0 10px; border: 1px solid transparent; border-radius: 999px; background: linear-gradient(var(--bg), var(--bg)) padding-box, var(--grad) border-box; font-size: 8.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
 @media (min-width: 981px) { .nav__cta { display: none; } }
