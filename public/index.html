@@ -81,7 +81,7 @@
 .footer__addr { margin-top: 16px; font-style: normal; font-size: 13px; color: var(--muted); }
 .footer__addr a { color: var(--ink); border-bottom: 1px solid var(--pink); }
 .footer__addr + .footer__credit { margin-top: 12px; }
-@media (max-width: 640px) { .footer__row { flex-direction: column; align-items: flex-start; } }
+@media (max-width: 640px) { .footer__row { flex-wrap: nowrap; gap: 10px; } .footer__logo img { height: 30px; } .footer__legal { flex-direction: column; flex-wrap: nowrap; gap: 0; align-items: center; } .footer__legal a { padding: 4px 0; font-size: 9px; letter-spacing: .1em; text-align: center; } .footer__social { gap: 6px; } .footer__social a { width: 34px; height: 34px; } .footer__social svg { width: 15px; height: 15px; } .footer__credit { flex-wrap: nowrap; font-size: 10px; gap: 8px; } }
 </style>
 <style data-8b-part="base">
 *, *::before, *::after { box-sizing: border-box; }
@@ -127,6 +127,8 @@ html.lenis, html.lenis body { height: auto; }
 .nav__links a:hover::after, .nav__links a.is-current::after { transform: scaleX(1); }
 .nav__links a.is-current { color: #ffd4f0; }
 .nav__menu { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255, 255, 255, .04); }
+.nav__cta { margin-left: auto; margin-right: -10px; display: inline-flex; align-items: center; min-height: 40px; padding: 0 12px; border: 1px solid transparent; border-radius: 999px; background: linear-gradient(var(--bg), var(--bg)) padding-box, var(--grad) border-box; font-size: 9.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+@media (min-width: 981px) { .nav__cta { display: none; } }
 .nav__menu svg { width: 22px; height: 22px; }
 .menu { position: fixed; inset: 0; z-index: 80; display: flex; flex-direction: column; padding: 14px var(--gutter) 32px; background: linear-gradient(180deg, #0c0b1d, #06060f); overflow-y: auto; }
 .menu[hidden] { display: none; }
@@ -161,7 +163,7 @@ html.lenis, html.lenis body { height: auto; }
 @media (max-width: 640px) {
   .hero { padding-top: 12px; }
   .hero__frame { border-radius: 14px; }
-  .hero__cta { position: static; transform: none; margin: 14px auto 0; display: flex; width: 100%; max-width: 360px; background: linear-gradient(var(--bg), var(--bg)) padding-box, var(--grad) border-box; }
+  .hero__cta { position: static; transform: none; margin: 12px auto 0; display: flex; width: fit-content; min-height: 38px; padding: 0 22px; font-size: 10.5px; background: linear-gradient(var(--bg), var(--bg)) padding-box, var(--grad) border-box; }
   .hero__cta:hover { transform: none; }
   .hero__dots { position: static; transform: none; flex-direction: row; justify-content: center; margin-top: 10px; }
   .hero__dots button::after { left: 4px; top: 10px; width: 16px; height: 4px; }
@@ -215,7 +217,7 @@ html.lenis, html.lenis body { height: auto; }
 .ex { --gx-w: clamp(220px, calc((min(100vw, var(--wrap)) - 2 * var(--gutter) - 48px) / 4), 290px); --gx-gap: 16px; padding-block: 14px; }
 .ex .ev { flex: 0 0 var(--gx-w); width: var(--gx-w); }
 .ex .ev__art img, .ex .ev__art video { -webkit-user-drag: none; }
-@media (max-width: 640px) { .gx { --gx-w: min(64vw, 260px); --gx-gap: 12px; } .ex { --gx-w: min(72vw, 300px); --gx-gap: 14px; } }
+@media (max-width: 640px) { .gx { --gx-w: min(64vw, 260px); --gx-gap: 12px; } .ex { --gx-w: min(58vw, 230px); --gx-gap: 12px; } }
 </style>
 <style data-8b-part="section:contato">
 </style>
@@ -282,7 +284,18 @@ html.lenis, html.lenis body { height: auto; }
 .viewer__stage { touch-action: pan-y; user-select: none; }
 .viewer__stage img { -webkit-user-drag: none; }
 .viewer .viewer__thumbs button { flex: none; width: 44px; aspect-ratio: 9 / 16; border-radius: 8px; }
-.viewer--event .viewer__stage img, .viewer--event .viewer__stage video { max-height: min(64dvh, 700px); }
+.viewer--event .viewer__stage img, .viewer--event .viewer__stage video { max-height: min(52dvh, 560px); background: #05050c; }
+.viewer--event .viewer__stage { background: radial-gradient(120% 90% at 50% 40%, #14122b, #05050c); }
+.viewer--event .viewer__side { gap: 12px; padding: 22px 18px 28px; }
+.viewer--event .viewer__side h2 { font-size: clamp(18px, 5vw, 22px); }
+@media (min-width: 861px) {
+  .viewer--event { width: min(1040px, calc(100vw - 48px)); }
+  .viewer--event .viewer__in { height: min(calc(100dvh - 48px), 820px); max-height: none; overflow: hidden; grid-template-rows: minmax(0, 1fr); grid-template-columns: minmax(0, 1fr) minmax(340px, 1fr); }
+  .viewer--event .viewer__media { height: 100%; align-content: stretch; grid-template-rows: minmax(0, 1fr); }
+  .viewer--event .viewer__stage { height: 100%; }
+  .viewer--event .viewer__stage img, .viewer--event .viewer__stage video { height: 100%; width: 100%; max-height: none; object-fit: contain; }
+  .viewer--event .viewer__side { max-height: none; height: 100%; padding: 28px 26px 32px; scrollbar-width: thin; }
+}
 </style>
 </head>
 <body>
@@ -301,7 +314,8 @@ html.lenis, html.lenis body { height: auto; }
       
       <a href="contato.html">Contato</a>
     </nav>
-    <button class="nav__menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+    <a class="nav__cta" href="listas.html">Listas de desconto</a>
+<button class="nav__menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
   </div>
