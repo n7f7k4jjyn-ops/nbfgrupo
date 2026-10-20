@@ -136,6 +136,9 @@ html.lenis, html.lenis body { height: auto; }
 .menu__top img { height: 42px; width: auto; }
 .menu__close { width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255, 255, 255, .04); font-size: 22px; line-height: 1; }
 .menu__links { display: grid; margin-top: 18px; }
+.legal-m { opacity: .8; }
+@media (min-width: 981px) { .legal-m { display: none !important; } }
+@media (max-width: 980px) { .footer__legal { display: none; } }
 .menu__links a { padding: 16px 2px; border-bottom: 1px solid var(--line); font-size: 15px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
 @media (min-width: 981px) {
   :root { --nav-h: 64px; }
@@ -289,12 +292,24 @@ html.lenis, html.lenis body { height: auto; }
 .viewer--event .viewer__side { gap: 12px; padding: 22px 18px 28px; }
 .viewer--event .viewer__side h2 { font-size: clamp(18px, 5vw, 22px); }
 @media (min-width: 861px) {
-  .viewer--event { width: min(1040px, calc(100vw - 48px)); }
-  .viewer--event .viewer__in { height: min(calc(100dvh - 48px), 820px); max-height: none; overflow: hidden; grid-template-rows: minmax(0, 1fr); grid-template-columns: minmax(0, 1fr) minmax(340px, 1fr); }
+  .viewer--event { width: min(1280px, calc(100vw - 40px)); }
+  .viewer--event .viewer__in { height: min(calc(100dvh - 40px), 860px); max-height: none; overflow: hidden; grid-template-rows: minmax(0, 1fr); grid-template-columns: minmax(0, 400px) minmax(0, 1fr); }
+  .viewer--event .viewer__side { overflow: hidden; padding: 22px 26px 18px; gap: 8px; }
+  .viewer--event .viewer__side p { font-size: 13px; line-height: 1.45; }
+  .viewer--event .vinfo { display: block; column-count: 2; column-gap: 22px; gap: 0; margin-top: 8px; }
+  .viewer--event .vsec { break-inside: avoid; margin-bottom: 12px; gap: 5px; }
+  .viewer--event .vlist { gap: 4px; }
+  .viewer--event .vlist li { padding: 5px 10px; font-size: 12px; }
+  .viewer--event .vlist a { font-size: 11px; }
+  .viewer--event .vinfo p { font-size: 12px; line-height: 1.45; }
+  .viewer--event .vsec h3 { font-size: 10px; }
+}
+@media (min-width: 861px) and (max-height: 760px) { .viewer--event .vlist li { padding: 3px 9px; } .viewer--event .viewer__side { padding-block: 14px 10px; } }
+@media (max-width: 860px) { .viewer--event .viewer__side { gap: 10px; } .viewer__in { scrollbar-width: none; } .viewer__in::-webkit-scrollbar { display: none; } }
   .viewer--event .viewer__media { height: 100%; align-content: stretch; grid-template-rows: minmax(0, 1fr); }
   .viewer--event .viewer__stage { height: 100%; }
   .viewer--event .viewer__stage img, .viewer--event .viewer__stage video { height: 100%; width: 100%; max-height: none; object-fit: contain; }
-  .viewer--event .viewer__side { max-height: none; height: 100%; padding: 28px 26px 32px; scrollbar-width: thin; }
+  .viewer--event .viewer__side { max-height: none; height: 100%; scrollbar-width: thin; }
 }
 </style>
 </head>
@@ -331,6 +346,9 @@ html.lenis, html.lenis body { height: auto; }
       <a href="cardapio.html">Cardápio</a>
       <a href="informacoes.html">Informações</a>
       <a href="contato.html">Contato</a>
+      <a class="legal-m" href="privacidade.html">Política de privacidade</a>
+      <a class="legal-m" href="termos-de-uso.html">Termos de uso</a>
+      <a class="legal-m" href="exclusao-de-dados.html">Exclusão de dados</a>
     </nav>
   </div>
 </header>

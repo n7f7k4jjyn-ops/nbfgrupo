@@ -158,3 +158,7 @@ body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-even
 .menu a::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: var(--grad); z-index: 1; }
 .formbox { border-radius: 20px; border-color: color-mix(in srgb, var(--lilac) 40%, transparent); }
 .back { display: inline-flex; justify-content: center; }
+
+.legal-m { opacity: .8; }
+@media (min-width: 981px) { .legal-m { display: none !important; } }
+@media (max-width: 980px) { .footer__legal { display: none; } }
