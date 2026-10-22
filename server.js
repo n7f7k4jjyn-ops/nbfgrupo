@@ -4,6 +4,8 @@ const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
 
+const admin = require('./admin');
+
 const PUBLIC_ROOT = path.resolve(__dirname, 'public');
 const PORT = Number.parseInt(process.env.PORT || '3000', 10);
 const MIME_TYPES = Object.freeze({
@@ -32,10 +34,6 @@ function sendText(res, status, message, headOnly = false) {
 const server = http.createServer((req, res) => {
   const method = req.method || 'GET';
   const headOnly = method === 'HEAD';
-  if (method !== 'GET' && !headOnly) {
-    res.setHeader('Allow', 'GET, HEAD');
-    return sendText(res, 405, 'Método não permitido', headOnly);
-  }
 
   let pathname;
   try {
@@ -44,6 +42,17 @@ const server = http.createServer((req, res) => {
     return sendText(res, 400, 'Requisição inválida', headOnly);
   }
 
+  if (admin.handle(req, res, pathname)) return;
+
+  if (method !== 'GET' && !headOnly) {
+    res.setHeader('Allow', 'GET, HEAD');
+    return sendText(res, 405, 'Método não permitido', headOnly);
+  }
+
+  if (pathname === '/admin') {
+    res.writeHead(302, { Location: '/admin/' });
+    return res.end();
+  }
   if (pathname === '/') pathname = '/index.html';
   if (pathname === '/listas' || pathname === '/listas/') pathname = '/listas/index.html';
   if (pathname.endsWith('/')) pathname += 'index.html';
