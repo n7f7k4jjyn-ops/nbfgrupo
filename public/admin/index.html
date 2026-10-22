@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Verdant · Painel</title>
+<style>
+:root{--bg:#0d1110;--panel:#161c1a;--line:#26302d;--fg:#eef3f0;--mut:#8fa09a;--acc:#5fe3a1;--err:#ff7b7b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,sans-serif}
+button,input,textarea{font:inherit;color:inherit}
+.btn{background:var(--acc);color:#04130c;border:0;border-radius:8px;padding:.5rem .9rem;font-weight:600;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}.btn.danger{background:transparent;color:var(--err);border:1px solid var(--err)}
+input,textarea{width:100%;background:#0d1110;border:1px solid var(--line);border-radius:8px;padding:.5rem .7rem}
+label{display:block;font-size:.8rem;color:var(--mut);margin:.6rem 0 .2rem}
+#login{max-width:340px;margin:18vh auto;background:var(--panel);padding:1.5rem;border-radius:14px;border:1px solid var(--line)}
+#app{display:none;min-height:100vh;grid-template-columns:220px 1fr}
+nav{background:var(--panel);border-right:1px solid var(--line);padding:1rem;display:flex;flex-direction:column;gap:.3rem}
+nav h1{font-size:1.1rem;margin:0 0 1rem;color:var(--acc)}
+nav a{padding:.5rem .7rem;border-radius:8px;color:var(--fg);text-decoration:none;cursor:pointer}
+nav a.on,nav a:hover{background:#1f2926}nav .sp{flex:1}
+main{padding:1.5rem;max-width:960px;width:100%}h2{margin-top:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1rem;margin-bottom:1rem}
+.big{font-size:2rem;font-weight:700;color:var(--acc)}.mut{color:var(--mut)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.media{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem}
+.media img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;background:#000}
+.msg{min-height:1.4rem;color:var(--err)}.msg.ok{color:var(--acc)}
+@media(max-width:700px){#app{grid-template-columns:1fr}nav{flex-direction:row;flex-wrap:wrap}.row2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<form id="login" autocomplete="off">
+  <h1 style="margin-top:0">Verdant · Painel</h1>
+  <label for="pw">Senha de acesso</label>
+  <input id="pw" type="password" required autofocus>
+  <p class="msg" id="loginMsg"></p>
+  <button class="btn" type="submit">Entrar</button>
+</form>
+<div id="app">
+  <nav>
+    <h1>Verdant</h1>
+    <a data-view="overview">Visão geral</a>
+    <a data-view="events">Agenda</a>
+    <a data-view="media">Mídia</a>
+    <a data-view="pages">Páginas do site</a>
+    <span class="sp"></span>
+    <a href="/" target="_blank" rel="noopener">Ver site ↗</a>
+    <a id="logout">Sair</a>
+  </nav>
+  <main id="view"></main>
+</div>
+<script>
+'use strict';
+const $ = (s, r = document) => r.querySelector(s);
+const H = { 'X-Requested-With': 'verdant-admin' };
+
+function el(tag, props = {}, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(props)) {
+    if (k === 'class') n.className = v;
+    else if (k.startsWith('on')) n.addEventListener(k.slice(2), v);
+    else n[k] = v;
+  }
+  n.append(...kids);
+  return n;
+}
+
+async function api(path, opts = {}) {
+  const res = await fetch('/admin/api' + path, { ...opts, headers: { ...H, ...(opts.headers || {}) }, credentials: 'same-origin' });
+  const data = await res.json().catch(() => ({}));
+  if (res.status === 401 && path !== '/login') showLogin();
+  if (!res.ok) throw new Error(data.error || 'Erro ' + res.status);
+  return data;
+}
+
+function showLogin() { $('#app').style.display = 'none'; $('#login').style.display = 'block'; }
+function showApp() { $('#login').style.display = 'none'; $('#app').style.display = 'grid'; route(); }
+
+$('#login').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  try {
+    await api('/login', { method: 'POST', body: JSON.stringify({ password: $('#pw').value }) });
+    $('#pw').value = ''; $('#loginMsg').textContent = ''; showApp();
+  } catch (err) { $('#loginMsg').textContent = err.message; }
+});
+$('#logout').addEventListener('click', async () => { await api('/logout', { method: 'POST' }); showLogin(); });
+
+const views = {
+  async overview(root) {
+    const o = await api('/overview');
+    const stat = (label, v) => el('div', { class: 'card' }, el('div', { class: 'big' }, String(v)), el('div', { class: 'mut' }, label));
+    root.append(el('h2', {}, 'Visão geral'),
+      el('div', { class: 'grid' }, stat('Eventos', o.events), stat('Publicados', o.published), stat('Imagens', o.media)),
+      el('p', { class: 'mut' }, `Servidor ${o.node} · ativo há ${Math.round(o.uptimeSeconds / 60)} min`));
+  },
+
+  async events(root) {
+    let events = await api('/events');
+    const msg = el('p', { class: 'msg' });
+    const list = el('div');
+    const field = (ev, key, label, type = 'text') => {
+      const input = el('input', { type, value: ev[key] || '' });
+      input.addEventListener('input', () => { ev[key] = input.value; });
+      return el('div', {}, el('label', {}, label), input);
+    };
+    function draw() {
+      list.replaceChildren(...events.map((ev, i) => {
+        const desc = el('textarea', { rows: 3, value: ev.description || '' });
+        desc.addEventListener('input', () => { ev.description = desc.value; });
+        const pub = el('input', { type: 'checkbox', checked: ev.published !== false, style: 'width:auto' });
+        pub.addEventListener('change', () => { ev.published = pub.checked; });
+        return el('div', { class: 'card' },
+          field(ev, 'title', 'Título'),
+          el('div', { class: 'row2' }, field(ev, 'date', 'Data', 'date'), field(ev, 'time', 'Horário (ex: 22h)')),
+          field(ev, 'location', 'Local'),
+          el('label', {}, 'Descrição'), desc,
+          el('div', { class: 'row2' }, field(ev, 'image', 'Imagem (URL ou /uploads/...)'), field(ev, 'link', 'Link (ingressos/lista)')),
+          el('label', {}, pub, ' Publicado no site'),
+          el('div', { style: 'display:flex;gap:.5rem;margin-top:.8rem' },
+            el('button', { class: 'btn ghost', type: 'button', onclick: () => { if (i > 0) { [events[i - 1], events[i]] = [events[i], events[i - 1]]; draw(); } } }, '↑'),
+            el('button', { class: 'btn ghost', type: 'button', onclick: () => { if (i < events.length - 1) { [events[i + 1], events[i]] = [events[i], events[i + 1]]; draw(); } } }, '↓'),
+            el('button', { class: 'btn danger', type: 'button', onclick: () => { if (confirm('Remover este evento?')) { events.splice(i, 1); draw(); } } }, 'Remover')));
+      }));
+    }
+    draw();
+    root.append(el('h2', {}, 'Agenda'),
+      el('p', { class: 'mut' }, 'Os eventos publicados ficam disponíveis em /api/events.json.'),
+      el('div', { style: 'display:flex;gap:.5rem;margin-bottom:1rem' },
+        el('button', { class: 'btn ghost', onclick: () => { events.push({ title: 'Novo evento', published: false }); draw(); } }, '+ Novo evento'),
+        el('button', { class: 'btn', onclick: async () => {
+          try { events = await api('/events', { method: 'PUT', body: JSON.stringify(events) }); draw(); msg.className = 'msg ok'; msg.textContent = 'Salvo.'; }
+          catch (e) { msg.className = 'msg'; msg.textContent = e.message; }
+        } }, 'Salvar alterações')),
+      msg, list);
+  },
+
+  async media(root) {
+    const grid = el('div', { class: 'media' });
+    const msg = el('p', { class: 'msg' });
+    async function load() {
+      const items = await api('/media');
+      grid.replaceChildren(...items.map((m) => el('div', { class: 'card' },
+        el('img', { src: m.url, alt: m.name, loading: 'lazy' }),
+        el('div', { class: 'mut', style: 'word-break:break-all;font-size:.75rem' }, m.url),
+        el('div', { style: 'display:flex;gap:.4rem;margin-top:.4rem' },
+          el('button', { class: 'btn ghost', onclick: () => navigator.clipboard.writeText(location.origin + m.url) }, 'Copiar'),
+          el('button', { class: 'btn danger', onclick: async () => { if (confirm('Apagar imagem?')) { await api('/media/' + encodeURIComponent(m.name), { method: 'DELETE' }); load(); } } }, 'Apagar')))));
+      if (!items.length) grid.append(el('p', { class: 'mut' }, 'Nenhuma imagem enviada.'));
+    }
+    const file = el('input', { type: 'file', accept: '.jpg,.jpeg,.png,.webp,.svg,image/*' });
+    file.addEventListener('change', async () => {
+      const f = file.files[0]; if (!f) return;
+      try {
+        await api('/media', { method: 'POST', headers: { 'X-File-Name': encodeURIComponent(f.name) }, body: f });
+        msg.className = 'msg ok'; msg.textContent = 'Enviado.'; file.value = ''; load();
+      } catch (e) { msg.className = 'msg'; msg.textContent = e.message; }
+    });
+    root.append(el('h2', {}, 'Mídia'), el('div', { class: 'card' }, el('label', {}, 'Enviar imagem (até 5 MB)'), file, msg), grid);
+    load();
+  },
+
+  async pages(root) {
+    const pages = [['Início / agenda', '/'], ['Listas', '/listas/'], ['Scope Connect', '/scopeconnect/'],
+      ['Política de privacidade', '/politica-de-privacidade.html'], ['Termos de uso', '/termos-de-uso.html'], ['Exclusão de dados', '/exclusao-de-dados.html']];
+    root.append(el('h2', {}, 'Páginas do site'),
+      ...pages.map(([n, u]) => el('div', { class: 'card' }, el('strong', {}, n), ' ', el('a', { href: u, target: '_blank', rel: 'noopener', style: 'color:var(--acc)' }, u))));
+  },
+};
+
+async function route() {
+  const name = (location.hash || '#overview').slice(1);
+  const root = $('#view');
+  document.querySelectorAll('nav a[data-view]').forEach((a) => a.classList.toggle('on', a.dataset.view === name));
+  root.replaceChildren();
+  try { await (views[name] || views.overview)(root); } catch (e) { root.append(el('p', { class: 'msg' }, e.message)); }
+}
+document.querySelectorAll('nav a[data-view]').forEach((a) => a.addEventListener('click', () => { location.hash = a.dataset.view; }));
+window.addEventListener('hashchange', () => { if ($('#app').style.display === 'grid') route(); });
+
+api('/me').then(showApp).catch(showLogin);
+</script>
+</body>
+</html>
