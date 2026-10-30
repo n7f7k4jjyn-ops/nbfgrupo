@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="960" viewBox="0 0 480 960" preserveAspectRatio="none">
+ <defs>
+  <linearGradient id="night" x2="0" y2="1"><stop stop-color="#160010"/><stop offset=".65" stop-color="#240016"/><stop offset="1" stop-color="#10000d"/></linearGradient>
+  <linearGradient id="beam"><stop stop-color="#59dfff"/><stop offset=".3" stop-color="#ff04ac"/><stop offset=".7" stop-color="#ff41c5"/><stop offset="1" stop-color="#5c72ff"/></linearGradient>
+  <radialGradient id="floor"><stop stop-color="#d5007c" stop-opacity=".5"/><stop offset="1" stop-color="#7d0051" stop-opacity="0"/></radialGradient>
+  <radialGradient id="shade"><stop stop-color="#130010" stop-opacity=".9"/><stop offset=".66" stop-color="#130010" stop-opacity=".8"/><stop offset="1" stop-color="#130010" stop-opacity="0"/></radialGradient>
+  <filter id="glow" x="-100%" y="-30%" width="300%" height="160%"><feGaussianBlur stdDeviation="12"/></filter>
+  <g id="cross" fill="none" stroke-linecap="round"><path d="M-88 140 94 680M94 140-88 680" stroke="url(#beam)" stroke-width="25" opacity=".7" filter="url(#glow)"/><path d="M-88 140 94 680M94 140-88 680" stroke="url(#beam)" stroke-width="8"/><path d="M-88 140 94 680M94 140-88 680" stroke="#ffd8f3" stroke-width="1.5"/></g>
+ </defs>
+ <path fill="url(#night)" d="M0 0h480v960H0z"/>
+ <use href="#cross"/><use href="#cross" transform="translate(480) scale(-1 1)"/>
+ <ellipse cx="240" cy="820" rx="360" ry="160" fill="url(#floor)"/>
+ <path d="M0 766h480M0 794h480M0 832h480M0 884h480" stroke="#ff37b6" stroke-width="1" opacity=".1"/>
+ <ellipse cx="240" cy="430" rx="250" ry="420" fill="url(#shade)"/>
+</svg>
