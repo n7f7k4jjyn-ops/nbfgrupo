@@ -1,0 +1,47 @@
+name: Deploy Central Verdant (Apps Script)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps-script/verdant-central/**'
+      - '.github/workflows/verdant-central-deploy.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Configure clasp credentials
+        working-directory: apps-script/verdant-central
+        env:
+          CLASPRC_JSON: ${{ secrets.CLASPRC_JSON }}
+          CLASP_JSON: ${{ secrets.CLASP_JSON }}
+        run: |
+          test -n "$CLASPRC_JSON" || { echo 'Missing CLASPRC_JSON secret'; exit 1; }
+          test -n "$CLASP_JSON" || { echo 'Missing CLASP_JSON secret'; exit 1; }
+          printf '%s' "$CLASPRC_JSON" > "$HOME/.clasprc.json"
+          printf '%s' "$CLASP_JSON" > .clasp.json
+
+      - name: Push, version, and update the existing Web App deployment
+        working-directory: apps-script/verdant-central
+        env:
+          WEB_APP_DEPLOYMENT_ID: ${{ vars.WEB_APP_DEPLOYMENT_ID }}
+        run: |
+          test -n "$WEB_APP_DEPLOYMENT_ID" || { echo 'Missing WEB_APP_DEPLOYMENT_ID repository variable'; exit 1; }
+          npx --yes @google/clasp push --force
+          VERSION_OUTPUT="$(npx --yes @google/clasp version "GitHub ${GITHUB_SHA:0:7}")"
+          printf '%s\n' "$VERSION_OUTPUT"
+          VERSION_NUMBER="$(printf '%s\n' "$VERSION_OUTPUT" | grep -oE '[0-9]+' | tail -n 1)"
+          test -n "$VERSION_NUMBER" || { echo 'Could not read Apps Script version number'; exit 1; }
+          npx --yes @google/clasp redeploy "$WEB_APP_DEPLOYMENT_ID" "$VERSION_NUMBER" "GitHub ${GITHUB_SHA:0:7}"
